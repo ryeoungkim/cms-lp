@@ -69,45 +69,177 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(59,130,246,0.20),_transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(16,185,129,0.12),_transparent_60%)]" />
       <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-8 sm:py-28">
-        <h1 className="max-w-3xl text-4xl font-bold leading-[1.18] tracking-tight sm:text-5xl lg:text-6xl">
-          事業のコンテキストを、
-          <br className="hidden sm:inline" />
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
-            AIに渡す。
-          </span>
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
-          会社の概要から事業の状況まで、そのすべてを
-          <br className="hidden sm:inline" />
-          AIが理解できる形に整える——
-          <strong className="text-slate-100">
-            コンテキストマネジメントシステム（CMS）
-          </strong>
-          。
-        </p>
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-blue-600 px-6 py-3 text-center text-base font-semibold text-white transition-colors duration-200 hover:bg-blue-700"
-          >
-            お申込みはこちら
-          </a>
-          <a
-            href={FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-slate-700 bg-slate-800 px-6 py-3 text-center text-base font-semibold text-slate-100 transition-colors duration-200 hover:bg-slate-700"
-          >
-            30分の無料相談を申し込む
-          </a>
+        <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <h1 className="text-4xl font-bold leading-[1.18] tracking-tight sm:text-5xl lg:text-6xl">
+              事業のコンテキストを、
+              <br className="hidden sm:inline" />
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
+                AIに渡す。
+              </span>
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-slate-300 sm:text-xl">
+              会社の概要から事業の状況まで、そのすべてを
+              <br className="hidden sm:inline" />
+              AIが理解できる形に整える——
+              <strong className="text-slate-100">
+                コンテキストマネジメントシステム（CMS）
+              </strong>
+              。
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-blue-600 px-6 py-3 text-center text-base font-semibold text-white transition-colors duration-200 hover:bg-blue-700"
+              >
+                お申込みはこちら
+              </a>
+              <a
+                href={FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border border-slate-700 bg-slate-800 px-6 py-3 text-center text-base font-semibold text-slate-100 transition-colors duration-200 hover:bg-slate-700"
+              >
+                30分の無料相談を申し込む
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-slate-400">
+              フォーム内で「相談希望」も選択できます。
+            </p>
+          </div>
+          <HeroVisual />
         </div>
-        <p className="mt-4 text-sm text-slate-400">
-          フォーム内で「相談希望」も選択できます。
-        </p>
       </div>
     </section>
+  );
+}
+
+function HeroVisual() {
+  const sources = [
+    { icon: "📁", label: "Drive", tone: "text-blue-300" },
+    { icon: "💬", label: "Slack", tone: "text-purple-300" },
+    { icon: "📝", label: "Notion", tone: "text-slate-200" },
+    { icon: "✉", label: "Gmail", tone: "text-red-300" },
+  ];
+  return (
+    <div className="relative">
+      {/* デスクトップ: 横並び 3 カラム */}
+      <div className="hidden items-center gap-4 lg:grid lg:grid-cols-[auto_auto_1fr_auto_auto]">
+        {/* Sources */}
+        <div className="space-y-2">
+          {sources.map((s) => (
+            <div
+              key={s.label}
+              className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/70 px-3 py-2 text-xs shadow-sm shadow-slate-950/60"
+            >
+              <span className={`text-base ${s.tone}`}>{s.icon}</span>
+              <span className="font-medium text-slate-200">{s.label}</span>
+            </div>
+          ))}
+        </div>
+        {/* Fan-in arrow */}
+        <FanInArrow />
+        {/* CMS box */}
+        <div className="relative rounded-2xl border-2 border-blue-500/40 bg-gradient-to-br from-blue-600/30 via-cyan-500/10 to-emerald-500/20 px-5 py-8 text-center shadow-xl shadow-blue-900/40">
+          <div className="text-[10px] font-mono tracking-[0.2em] text-blue-300">
+            CONTEXT
+          </div>
+          <div className="mt-1 text-2xl font-bold tracking-tight text-slate-50">
+            CMS
+          </div>
+          <div className="mt-1 text-[10px] text-slate-400">統合・整流</div>
+          {/* Glow */}
+          <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-blue-500/10 blur-xl" />
+        </div>
+        {/* Arrow */}
+        <div className="flex items-center text-emerald-400">
+          <span className="mr-1 h-px w-6 bg-gradient-to-r from-emerald-400/20 to-emerald-400" />
+          ▶
+        </div>
+        {/* AI */}
+        <div className="rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/20 to-blue-600/10 px-4 py-6 text-center shadow-lg shadow-emerald-900/30">
+          <div className="text-2xl">🤝</div>
+          <div className="mt-1 text-sm font-bold text-slate-50">AI</div>
+          <div className="text-[10px] text-emerald-300">パートナー</div>
+        </div>
+      </div>
+
+      {/* モバイル: 縦並び */}
+      <div className="lg:hidden">
+        <div className="grid grid-cols-2 gap-2">
+          {sources.map((s) => (
+            <div
+              key={s.label}
+              className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/70 px-3 py-2 text-xs"
+            >
+              <span className={`text-base ${s.tone}`}>{s.icon}</span>
+              <span className="font-medium text-slate-200">{s.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="my-3 flex justify-center text-emerald-400">▼</div>
+        <div className="rounded-2xl border-2 border-blue-500/40 bg-gradient-to-br from-blue-600/30 to-emerald-500/20 px-5 py-6 text-center">
+          <div className="text-[10px] font-mono tracking-[0.2em] text-blue-300">
+            CONTEXT
+          </div>
+          <div className="mt-1 text-2xl font-bold tracking-tight">CMS</div>
+          <div className="mt-1 text-[10px] text-slate-400">統合・整流</div>
+        </div>
+        <div className="my-3 flex justify-center text-emerald-400">▼</div>
+        <div className="rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/20 to-blue-600/10 px-4 py-5 text-center">
+          <div className="text-2xl">🤝</div>
+          <div className="mt-1 text-sm font-bold">AI パートナー</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FanInArrow() {
+  return (
+    <svg
+      width="52"
+      height="180"
+      viewBox="0 0 52 180"
+      className="text-emerald-400"
+      aria-hidden
+    >
+      <defs>
+        <linearGradient id="fanGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="1" />
+        </linearGradient>
+      </defs>
+      {/* 4 sources on left at y = 20, 60, 100, 140 converging to (52, 90) */}
+      <path
+        d="M0,20 C25,20 25,90 52,90"
+        stroke="url(#fanGrad)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M0,60 C25,60 25,90 52,90"
+        stroke="url(#fanGrad)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M0,100 C25,100 25,90 52,90"
+        stroke="url(#fanGrad)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M0,140 C25,140 25,90 52,90"
+        stroke="url(#fanGrad)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      {/* Arrow head */}
+      <polygon points="52,90 44,86 44,94" fill="currentColor" />
+    </svg>
   );
 }
 
@@ -143,8 +275,49 @@ function Question() {
             止まり——になっていないでしょうか。
           </p>
         </div>
+        <ChatMock />
       </div>
     </section>
+  );
+}
+
+function ChatMock() {
+  return (
+    <div className="mx-auto mt-14 max-w-xl">
+      <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-2xl shadow-slate-950/50">
+        {/* Window bar */}
+        <div className="mb-4 flex items-center gap-1.5 border-b border-slate-800 pb-3">
+          <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+          <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
+          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
+          <span className="ml-3 text-[11px] text-slate-500">
+            汎用AIチャット
+          </span>
+        </div>
+        {/* User bubble */}
+        <div className="flex justify-end">
+          <div className="flex max-w-[85%] items-start gap-2">
+            <div className="rounded-2xl rounded-tr-sm border border-blue-500/30 bg-blue-500/15 px-4 py-2.5 text-sm text-slate-100">
+              先週の A社商談、どこまで進んだ？
+            </div>
+            <div className="text-xl">🧑</div>
+          </div>
+        </div>
+        {/* AI bubble */}
+        <div className="mt-4 flex">
+          <div className="flex max-w-[85%] items-start gap-2">
+            <div className="text-xl">🤖</div>
+            <div className="rounded-2xl rounded-tl-sm border border-slate-700 bg-slate-800/80 px-4 py-2.5 text-sm text-slate-300">
+              申し訳ありません、社内の商談情報にはアクセスできません。
+              一般的な商談管理のコツをご紹介しましょうか？
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 text-center text-xs font-medium tracking-wide text-slate-500">
+        — 文脈のないAIは、ここで止まる。
+      </div>
+    </div>
   );
 }
 
