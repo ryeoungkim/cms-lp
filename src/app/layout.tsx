@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CMS — 経営者のための、AI×コンテキスト管理システム ｜ リエゾン",
+  title: "CMS — AIを、事業のパートナーに。コンテキストマネジメントシステム ｜ リエゾン",
   description:
-    "事業のあらゆる文脈をAIに渡せる状態にするCMS（Context Management System）。IT導入補助金 約2/3 で実質負担を抑えて導入可能。お申込みフォーム・無料相談はこちら。",
+    "会社の概要から事業の状況まで、そのすべてをAIが理解できる形に整えるコンテキストマネジメントシステム（CMS）。AIを、事業のパートナーとして自律的に動かす第一歩。",
   openGraph: {
-    title: "CMS — 経営者のための、AI×コンテキスト管理システム",
+    title: "CMS — AIを、事業のパートナーに。",
     description:
-      "事業のあらゆる文脈をAIに渡せる状態にするCMS。IT導入補助金 約2/3 で実質負担を抑えて導入可能。",
+      "会社の概要から事業の状況まで、そのすべてをAIが理解できる形に整えるコンテキストマネジメントシステム（CMS）。",
     type: "website",
     locale: "ja_JP",
   },

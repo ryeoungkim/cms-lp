@@ -8,12 +8,10 @@ export default function LandingPage() {
     <main className="min-h-screen bg-slate-900 text-slate-50">
       <Header />
       <Hero />
-      <Pain />
+      <Question />
+      <Vision />
       <Solution />
       <Features />
-      <Pricing />
-      <CashFlow />
-      <ZeroOutOfPocket />
       <FAQ />
       <Trust />
       <FinalCTA />
@@ -36,14 +34,14 @@ function Header() {
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-slate-300 sm:flex">
+          <a href="#question" className="hover:text-slate-50">
+            課題
+          </a>
           <a href="#solution" className="hover:text-slate-50">
             CMSとは
           </a>
           <a href="#features" className="hover:text-slate-50">
             機能
-          </a>
-          <a href="#pricing" className="hover:text-slate-50">
-            価格
           </a>
           <a href="#faq" className="hover:text-slate-50">
             FAQ
@@ -71,10 +69,6 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(59,130,246,0.20),_transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(16,185,129,0.12),_transparent_60%)]" />
       <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-8 sm:py-28">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300">
-          <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          IT導入補助金 約2/3 対象パッケージ
-        </div>
         <h1 className="max-w-3xl text-4xl font-bold leading-[1.18] tracking-tight sm:text-5xl lg:text-6xl">
           事業のコンテキストを、
           <br className="hidden sm:inline" />
@@ -83,9 +77,13 @@ function Hero() {
           </span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
-          経営者の頭の中をデジタル化する <strong className="text-slate-100">CMS</strong>。
+          会社の概要から事業の状況まで、そのすべてを
           <br className="hidden sm:inline" />
-          IT導入補助金で約2/3補助。実質負担を抑えて、AI活用の土台を一気に整える。
+          AIが理解できる形に整える——
+          <strong className="text-slate-100">
+            コンテキストマネジメントシステム（CMS）
+          </strong>
+          。
         </p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <a
@@ -114,51 +112,70 @@ function Hero() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Pain                                                                */
+/* Question — 問題提起                                                  */
 /* ------------------------------------------------------------------ */
-function Pain() {
-  const items = [
-    {
-      title: "データがバラバラ",
-      body:
-        "事業データが Google Drive、Slack、Notion、Gmail に散らばっていて、AIに渡せる状態じゃない。",
-    },
-    {
-      title: "毎回ゼロから説明",
-      body:
-        "ChatGPTやClaudeを使っても、自社固有の文脈を毎回説明するのに疲れる。",
-    },
-    {
-      title: "どこから始める？",
-      body:
-        "「AIを使いたい」と思っても、何から始めればいいか分からない。",
-    },
-  ];
+function Question() {
   return (
-    <section className="border-t border-slate-800 bg-slate-950/40">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-8 sm:py-24">
-        <div className="mb-12 max-w-2xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-400">
-            経営者のリアル
+    <section id="question" className="border-t border-slate-800 bg-slate-950/40">
+      <div className="mx-auto max-w-4xl px-4 py-20 sm:px-8 sm:py-24">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-400">
+          問いかけ
+        </p>
+        <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+          AIを、単純にチャットだけで
+          <br className="hidden sm:inline" />
+          終わらせていませんか？
+        </h2>
+        <div className="mt-8 space-y-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p>
+            便利ではあるけれど、
+            <strong className="text-slate-100">
+              「うちの状況を全部知った上で動いてくれる」
+            </strong>
+            わけではない。
           </p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            AI活用、こんなところで止まっていませんか？
-          </h2>
+          <p>
+            事業データは Drive、Slack、Notion、Gmail に散らばり、
+            都度「うちの場合は…」と説明するのは経営者自身。
+          </p>
+          <p className="text-slate-100">
+            結局、AIは <strong>&quot;賢い検索窓&quot;</strong>{" "}
+            止まり——になっていないでしょうか。
+          </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {items.map((it) => (
-            <div
-              key={it.title}
-              className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6"
-            >
-              <div className="mb-3 text-2xl">⚠️</div>
-              <h3 className="mb-2 text-lg font-semibold text-slate-100">
-                {it.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-slate-400">{it.body}</p>
-            </div>
-          ))}
-        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Vision                                                              */
+/* ------------------------------------------------------------------ */
+function Vision() {
+  return (
+    <section className="relative overflow-hidden border-t border-slate-800">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.16),_transparent_65%)]" />
+      <div className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-8 sm:py-28">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-400">
+          目指す姿
+        </p>
+        <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+          AIを、
+          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
+            事業のパートナーに。
+          </span>
+        </h2>
+        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
+          AIが会社と事業のすべての状況を理解し、
+          <br className="hidden sm:inline" />
+          パートナーとして自律的にタスクをこなしていく。
+        </p>
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl">
+          そうした姿を、一緒に目指しませんか。
+        </p>
+        <p className="mt-10 inline-block rounded-full border border-slate-700 bg-slate-800/60 px-4 py-1.5 text-sm text-slate-300">
+          CMSは、その第一歩です。
+        </p>
       </div>
     </section>
   );
@@ -187,7 +204,7 @@ function Solution() {
       label: "03",
       title: "業務オペレーション統合",
       body:
-        "RakuCoreOffice AI（クラウドERP）を商流として組み込み、AIを日々の業務全体に貫通させる。",
+        "AIを個別タスクだけでなく、業務プロセス全体に組み込み、パートナーとして動かす。",
       accent: "from-emerald-400 to-blue-400",
     },
   ];
@@ -305,340 +322,13 @@ function Features() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Pricing                                                             */
-/* ------------------------------------------------------------------ */
-function Pricing() {
-  return (
-    <section id="pricing" className="border-t border-slate-800">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-8 sm:py-24">
-        <div className="mb-12 max-w-2xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-400">
-            価格・補助金スキーム
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            実質負担 <span className="text-emerald-400">約 225万円</span> で
-            <br />
-            AI活用の土台一式を導入。
-          </h2>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          {/* 価格テーブル */}
-          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
-            <div className="border-b border-slate-800 bg-gradient-to-r from-blue-600/20 to-emerald-500/10 px-6 py-5">
-              <div className="text-sm text-slate-300">販売価格（税抜）</div>
-              <div className="mt-1 text-4xl font-bold tracking-tight">
-                520<span className="ml-1 text-2xl">万円</span>
-              </div>
-            </div>
-            <dl className="divide-y divide-slate-800 text-sm">
-              <Row
-                label="IT導入補助金（補助率 約2/3）"
-                value="− 約 346.67 万円"
-                accent="text-emerald-400"
-              />
-              <Row
-                label="実質負担（パターンA / 通常購入）"
-                value="約 225.4 万円"
-                accent="text-amber-300 font-bold text-base"
-              />
-              <Row
-                label="補助金申請サポート（必須・成功報酬）"
-                value="10 万円"
-              />
-              <Row
-                label="3年経過後の継続利用"
-                value="月額 5,000 円/件"
-              />
-            </dl>
-          </div>
-
-          {/* 持ち出し0プラン */}
-          <div className="rounded-2xl border border-emerald-700/40 bg-gradient-to-br from-emerald-500/10 to-blue-600/5 p-6">
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-700/40 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300">
-              選択可能
-            </div>
-            <h3 className="mb-3 text-xl font-semibold text-slate-100">
-              持ち出し0円プラン
-            </h3>
-            <p className="mb-4 text-sm leading-relaxed text-slate-300">
-              弊社が御社のサービスを買い取る「バーター方式」で、
-              実質持ち出し0円での導入も可能です。
-            </p>
-            <p className="text-xs text-slate-400">
-              ※ 具体的に何を買い取るかは個別ヒアリングにて。
-            </p>
-            <a
-              href={FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-block rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-300 transition-colors duration-200 hover:bg-emerald-500/20"
-            >
-              個別相談を申し込む →
-            </a>
-          </div>
-        </div>
-
-        <p className="mt-8 rounded-lg border border-slate-800 bg-slate-900/40 p-4 text-xs leading-relaxed text-slate-400">
-          ※ 商流上、RakuCoreOffice AI（システムクラウド株式会社提供）のパッケージとして販売されます。
-          IT導入補助金の対象とするため、本パッケージで弊社CMSが提供されます。
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function Row({
-  label,
-  value,
-  accent,
-}: {
-  label: string;
-  value: string;
-  accent?: string;
-}) {
-  return (
-    <div className="flex items-center justify-between px-6 py-4">
-      <dt className="text-slate-300">{label}</dt>
-      <dd className={`tabular-nums ${accent ?? "text-slate-100"}`}>{value}</dd>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Cash flow (Pattern A) — CSS/HTML 自作                                */
-/* ------------------------------------------------------------------ */
-function CashFlow() {
-  const nodes = [
-    { icon: "🏛", name: "国", note: "" },
-    { icon: "🏢", name: "クライアント", note: "実質負担 225.4万" },
-    { icon: "☁️", name: "システムクラウド", note: "" },
-    { icon: "💼", name: "リエゾン", note: "" },
-  ];
-  const arrows = [
-    { amount: "346.67万", label: "IT補助金" },
-    { amount: "572万", label: "RakuCore発注" },
-    { amount: "504.8万", label: "CMSマージン" },
-  ];
-  return (
-    <section className="border-t border-slate-800 bg-slate-950/40">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-8 sm:py-24">
-        <div className="mb-12 max-w-2xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-400">
-            キャッシュフロー（パターンA：通常購入）
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            お金の流れは、シンプルに3ステップ。
-          </h2>
-        </div>
-
-        {/* デスクトップ: 横一列 */}
-        <div className="hidden lg:block">
-          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-2">
-            {nodes.map((n, i) => (
-              <FlowNode key={n.name} {...n} highlight={n.name === "クライアント"} index={i} />
-            ))}
-            {/* arrows are interleaved manually */}
-          </div>
-          {/* arrows overlay via second grid */}
-          <div className="-mt-[120px] grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-2">
-            <div />
-            <FlowArrow {...arrows[0]} />
-            <div />
-            <FlowArrow {...arrows[1]} />
-            <div />
-            <FlowArrow {...arrows[2]} />
-            <div />
-          </div>
-        </div>
-
-        {/* モバイル: 縦並び */}
-        <div className="space-y-3 lg:hidden">
-          {nodes.map((n, i) => (
-            <div key={n.name}>
-              <FlowNode {...n} highlight={n.name === "クライアント"} index={i} />
-              {i < arrows.length && (
-                <div className="flex justify-center py-2">
-                  <FlowArrow {...arrows[i]} vertical />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <ol className="mt-12 grid gap-4 text-sm text-slate-300 sm:grid-cols-3">
-          <li className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-            <span className="mr-2 font-mono text-blue-400">①</span>
-            国がクライアントへ <strong className="text-emerald-400">346.67万円</strong> の補助金を支給
-          </li>
-          <li className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-            <span className="mr-2 font-mono text-blue-400">②</span>
-            クライアントがシステムクラウドへ <strong>572万円</strong> を支払い
-          </li>
-          <li className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-            <span className="mr-2 font-mono text-blue-400">③</span>
-            システムクラウドからリエゾンへ CMSマージンが送金
-          </li>
-        </ol>
-
-        <div className="mt-8 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 text-center">
-          <div className="text-sm text-amber-200">クライアント実質負担</div>
-          <div className="mt-1 text-3xl font-bold text-amber-300">
-            約 225.4 万円
-          </div>
-          <p className="mt-2 text-sm text-slate-300">
-            これで、AI活用の土台一式が手に入ります。
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FlowNode({
-  icon,
-  name,
-  note,
-  highlight,
-  index,
-}: {
-  icon: string;
-  name: string;
-  note: string;
-  highlight?: boolean;
-  index: number;
-}) {
-  return (
-    <div
-      className={`rounded-2xl border p-4 text-center ${
-        highlight
-          ? "border-amber-500/40 bg-amber-500/5"
-          : "border-slate-700 bg-slate-800/60"
-      }`}
-      data-flow-index={index}
-    >
-      <div className="text-3xl">{icon}</div>
-      <div className="mt-2 text-sm font-semibold text-slate-100">{name}</div>
-      {note && (
-        <div className="mt-1 text-xs text-amber-300">{note}</div>
-      )}
-    </div>
-  );
-}
-
-function FlowArrow({
-  amount,
-  label,
-  vertical,
-}: {
-  amount: string;
-  label: string;
-  vertical?: boolean;
-}) {
-  if (vertical) {
-    return (
-      <div className="flex flex-col items-center">
-        <div className="text-xs font-semibold text-emerald-300">{amount}</div>
-        <div className="text-[10px] text-slate-400">{label}</div>
-        <div className="mt-1 text-emerald-400">▼</div>
-      </div>
-    );
-  }
-  return (
-    <div className="flex flex-col items-center px-2">
-      <div className="text-xs font-semibold text-emerald-300">{amount}</div>
-      <div className="text-[10px] text-slate-400">{label}</div>
-      <div className="mt-1 flex w-full items-center">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-400 to-emerald-400" />
-        <div className="text-emerald-400">▶</div>
-      </div>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Zero-out-of-pocket (Pattern B summary)                              */
-/* ------------------------------------------------------------------ */
-function ZeroOutOfPocket() {
-  return (
-    <section className="border-t border-slate-800">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-8 sm:py-24">
-        <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.2fr]">
-          <div>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-400">
-              発展形：持ち出し0円プラン
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              弊社が御社のサービスを買い取り、
-              <br className="hidden sm:inline" />
-              <span className="text-emerald-400">補助金と相殺</span>。
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-slate-300">
-              通常パターンの実質負担 225.4万円を、弊社が御社サービスを買い取ることで
-              <strong className="text-slate-100">実質0円</strong>に。
-              具体的に何を買い取るかは案件ごとに違うため、個別ヒアリングで設計します。
-            </p>
-            <a
-              href={FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-block rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-emerald-700"
-            >
-              個別相談を申し込む →
-            </a>
-          </div>
-
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <div className="mb-4 text-sm font-semibold text-slate-300">
-              純額サマリ（パターンB）
-            </div>
-            <dl className="divide-y divide-slate-800 text-sm">
-              <SumRow label="クライアント" value="±0 円" highlight />
-              <SumRow label="システムクラウド" value="+ 67.2 万" />
-              <SumRow label="リエゾン" value="+ 279.4 万" />
-              <SumRow label="国（補助金）" value="− 346.67 万" />
-            </dl>
-            <p className="mt-4 text-xs text-slate-500">
-              ※ 数値は税抜・代表ケース。詳細は個別ヒアリングで確定。
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SumRow({
-  label,
-  value,
-  highlight,
-}: {
-  label: string;
-  value: string;
-  highlight?: boolean;
-}) {
-  return (
-    <div className="flex items-center justify-between py-3">
-      <dt className="text-slate-300">{label}</dt>
-      <dd
-        className={`tabular-nums ${
-          highlight ? "text-lg font-bold text-emerald-400" : "text-slate-100"
-        }`}
-      >
-        {value}
-      </dd>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /* FAQ                                                                 */
 /* ------------------------------------------------------------------ */
 function FAQ() {
   const items = [
     {
-      q: "補助金は本当に取れますか？",
-      a: "システムクラウド株式会社経由で過去多数の採択実績があります。申請サポート（必須・成功報酬10万円）に含めて伴走します。",
+      q: "「AIパートナー」とは、具体的に何ができるのですか？",
+      a: "御社の顧客・案件・売上・ナレッジをすべて理解した上で、レポート作成、事前リサーチ、下書き作成、意思決定サポートまでを担います。単なるチャット応答ではなく、業務プロセスの一部として自律的に動きます。",
     },
     {
       q: "自社のデータを預けるのは不安です。",
@@ -650,11 +340,7 @@ function FAQ() {
     },
     {
       q: "導入期間はどれくらいですか？",
-      a: "補助金申請も含めて、通常2〜3ヶ月。御社のデータ量と複雑度によって変動します。",
-    },
-    {
-      q: "RakuCoreOffice AI とは何ですか？",
-      a: "システムクラウド株式会社が提供するクラウドERPパッケージです。本CMSはこのパッケージの一部として販売されており、IT導入補助金の対象となります。",
+      a: "通常2〜3ヶ月です。御社のデータ量と複雑度によって変動します。",
     },
   ];
   return (
@@ -719,11 +405,11 @@ function Trust() {
               </li>
               <li className="flex gap-3">
                 <span className="text-emerald-400">✓</span>
-                補助金申請から導入まで一気通貫サポート
+                設計から導入・運用まで一気通貫サポート
               </li>
               <li className="flex gap-3">
                 <span className="text-emerald-400">✓</span>
-                導入後の運用も月額5,000円/件で継続支援
+                導入後の運用・改善も継続的に伴走
               </li>
             </ul>
           </div>
@@ -757,12 +443,12 @@ function FinalCTA() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.20),_transparent_60%)]" />
       <div className="relative mx-auto max-w-3xl px-4 py-24 text-center sm:px-8 sm:py-28">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          AI活用の土台、
+          AIを、事業のパートナーへ。
           <br className="sm:hidden" />
           まずはお申込みから。
         </h2>
         <p className="mt-5 text-base leading-relaxed text-slate-300">
-          IT導入補助金で実質負担を抑え、CMSを導入。
+          御社の状況を理解したAIを、事業のパートナーに。
           <br className="hidden sm:inline" />
           フォーム送信後、担当より個別にご連絡いたします。
         </p>
@@ -800,9 +486,7 @@ function Footer() {
           <div className="font-semibold text-slate-200">
             CMS — Context Management System
           </div>
-          <div className="mt-1 text-xs">
-            提供：株式会社リエゾン ／ 商流：RakuCoreOffice AI（システムクラウド株式会社）
-          </div>
+          <div className="mt-1 text-xs">提供：株式会社リエゾン</div>
         </div>
         <div className="flex items-center gap-4 text-xs">
           <a
