@@ -325,30 +325,99 @@ function ChatMock() {
 /* Vision                                                              */
 /* ------------------------------------------------------------------ */
 function Vision() {
+  const scenes = [
+    {
+      icon: "🌅",
+      time: "月曜の朝",
+      text:
+        "AI が既に、先週の動きと今週の重要事項を整理して手元に届けている。",
+    },
+    {
+      icon: "🤝",
+      time: "商談 30 分前",
+      text:
+        "相手先の履歴・懸念・こちらの勝ち筋。要約されたブリーフが手元に。",
+    },
+    {
+      icon: "⚖️",
+      time: "意思決定の場",
+      text:
+        "過去の類似判断とその結果を並べて、AI が意思決定の材料を差し出す。",
+    },
+    {
+      icon: "✍️",
+      time: "定型業務",
+      text:
+        "メール、議事録、レポート。AI が御社のスタイルで下書きを済ませてある。",
+    },
+  ];
   return (
     <section className="relative overflow-hidden border-t border-slate-800">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.16),_transparent_65%)]" />
-      <div className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-8 sm:py-28">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-400">
-          目指す姿
-        </p>
-        <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-          AIを、
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
-            事業のパートナーに。
-          </span>
-        </h2>
-        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
-          AIが会社と事業のすべての状況を理解し、
+      <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-8 sm:py-28">
+        <div className="text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-400">
+            目指す姿
+          </p>
+          <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+            AIを、
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
+              事業のパートナーに。
+            </span>
+          </h2>
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
+            AIが会社と事業のすべての状況を理解し、
+            <br className="hidden sm:inline" />
+            パートナーとして自律的にタスクをこなしていく。
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl">
+            そうした姿を、一緒に目指しませんか。
+          </p>
+        </div>
+
+        {/* シーン */}
+        <div className="mt-16">
+          <div className="mb-8 text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-blue-400">
+              それは、こういう姿です
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {scenes.map((s) => (
+              <div
+                key={s.time}
+                className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 transition-colors duration-200 hover:border-slate-700 hover:bg-slate-900/80"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl leading-none">{s.icon}</div>
+                  <div className="flex-1">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+                      {s.time}
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-200">
+                      {s.text}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* パンチライン */}
+        <p className="mt-14 text-center text-xl font-semibold leading-relaxed text-slate-100 sm:text-2xl">
+          指示する側と、される側。
           <br className="hidden sm:inline" />
-          パートナーとして自律的にタスクをこなしていく。
+          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
+            その関係が、変わる。
+          </span>
         </p>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl">
-          そうした姿を、一緒に目指しませんか。
-        </p>
-        <p className="mt-10 inline-block rounded-full border border-slate-700 bg-slate-800/60 px-4 py-1.5 text-sm text-slate-300">
-          CMSは、その第一歩です。
-        </p>
+
+        <div className="mt-10 text-center">
+          <p className="inline-block rounded-full border border-slate-700 bg-slate-800/60 px-4 py-1.5 text-sm text-slate-300">
+            CMSは、その第一歩です。
+          </p>
+        </div>
       </div>
     </section>
   );
