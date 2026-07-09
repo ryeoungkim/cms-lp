@@ -37,6 +37,11 @@ export interface ClientPage {
   /** 対象申請ラウンド */
   round: "7月" | "8月" | "9月" | "調整中";
   amounts: ClientAmounts;
+  /**
+   * オプション特典: RKBラジオ「ビールとクワダテ」スポンサー特典。
+   * 設定した顧客のページにのみ表示される。from/to は「2026年8月」形式。
+   */
+  radioSponsor?: { from: string; to: string };
   updated: string;
 }
 

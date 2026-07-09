@@ -42,6 +42,7 @@ export default async function ClientGuidePage({
         <Status client={client} />
         <Schedule client={client} />
         <CashFlow client={client} />
+        <RadioSponsor client={client} />
         <Documents />
         <Apply />
         <Contact />
@@ -260,6 +261,30 @@ function CashFlow({ client }: { client: ClientPage }) {
       <p className="mt-4 text-xs leading-relaxed text-slate-500">
         ※ 8月・9月ラウンドで申請される場合は、上記の各時期が概ね1〜2か月ずつ後ろにずれます。
         ※ 金額・時期は補助金の交付決定内容等により変動する場合があります。
+      </p>
+    </section>
+  );
+}
+
+function RadioSponsor({ client }: { client: ClientPage }) {
+  if (!client.radioSponsor) return null;
+  const { from, to } = client.radioSponsor;
+  return (
+    <section className="mt-8 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 to-orange-500/5 p-6 sm:p-8">
+      <p className="text-xs font-semibold uppercase tracking-wider text-amber-400">
+        オプション特典
+      </p>
+      <h2 className="mt-2 text-lg font-semibold text-slate-100">
+        RKBラジオ「ビールとクワダテ」スポンサー特典
+      </h2>
+      <p className="mt-3 text-sm leading-relaxed text-slate-300">
+        本パッケージのオプションとして、RKBラジオで放送中の番組「ビールとクワダテ」のスポンサー特典が付帯します。
+      </p>
+      <p className="mt-4 inline-block rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-300">
+        特典期間: {from} 〜 {to}
+      </p>
+      <p className="mt-4 text-xs text-slate-500">
+        ※ 特典の詳細内容は担当よりご案内します。
       </p>
     </section>
   );
