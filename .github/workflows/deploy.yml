@@ -36,6 +36,10 @@ jobs:
       - name: Build with Next.js
         run: npm run build
 
+      # トップページのみ静的LP v2で上書き（/c/* の個別ガイドはNext.js版を維持）
+      - name: Overwrite top page with static LP v2
+        run: cp ./site/index.html ./out/index.html
+
       - name: Add .nojekyll
         run: touch ./out/.nojekyll
 

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="散らばった事業データを一元化し、AIが会社の全文脈を知っている状態をつくるCMS。朝ブリーフィング・自動タスク化・商談準備までAIが実行。IT導入補助金 2/3 対象。">
+<meta property="og:title" content="CMS – 経営者の頭の中をAIに渡す、コンテキスト管理システム">
+<meta property="og:description" content="AIが「あなたの会社を全部知っている」状態をつくるコンテキスト管理システム。IT導入補助金対象。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ryeoungkim.github.io/cms-lp/">
+<link rel="canonical" href="https://ryeoungkim.github.io/cms-lp/">
+<title>CMS – 経営者の頭の中をAIに渡す、コンテキスト管理システム ｜ リエゾン</title>
+<style>
+  :root{
+    --ink:#1a2233;
+    --ink-soft:#4a5468;
+    --base:#ffffff;
+    --base-alt:#f6f8fb;
+    --primary:#2247c7;
+    --primary-dark:#182f80;
+    --primary-deeper:#101f56;
+    --accent:#e8b93c;
+    --success:#1e7f5c;
+    --line:#dde3ee;
+    --serif:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+    --sans:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--base);line-height:1.8;font-size:16px;-webkit-font-smoothing:antialiased}
+  img,svg{max-width:100%}
+  a{color:var(--primary)}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .wrap-narrow{max-width:800px;margin:0 auto;padding:0 24px}
+  section{padding:80px 0}
+  @media(max-width:640px){section{padding:48px 0}}
+  .alt{background:var(--base-alt)}
+
+  .eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--primary);margin-bottom:14px}
+  h2{font-size:clamp(24px,4vw,34px);line-height:1.4;font-weight:700;text-wrap:balance;margin-bottom:16px}
+  .lede{color:var(--ink-soft);max-width:40em;margin-bottom:40px}
+
+  /* ---------- hero ---------- */
+  .hero{background:linear-gradient(168deg,var(--primary-dark) 0%,var(--primary-deeper) 78%);color:#fff;padding:96px 0 0;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto -10% -55% -10%;height:70%;background:radial-gradient(ellipse at center,rgba(34,71,199,.55),transparent 65%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:1}
+  .hero-label{font-size:12px;letter-spacing:.22em;color:var(--accent);font-weight:700}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.6vw,52px);line-height:1.5;margin:22px 0 20px;text-wrap:balance}
+  .hero p.sub{color:#c9d4f2;max-width:36em;font-size:clamp(15px,2vw,17px)}
+  .hero .grant{margin-top:22px;font-size:14px;color:var(--accent)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0 0}
+  .btn{display:inline-block;padding:16px 34px;border-radius:6px;font-weight:700;text-decoration:none;font-size:15.5px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--accent);color:#231a02;box-shadow:0 6px 22px rgba(232,185,60,.28)}
+  .btn-ghost{border:1px solid rgba(255,255,255,.45);color:#fff}
+  .btn-blue{background:var(--primary);color:#fff;box-shadow:0 6px 22px rgba(34,71,199,.3)}
+  .trustbar{margin-top:64px;border-top:1px solid rgba(255,255,255,.14);padding:18px 0 22px;font-size:13.5px;color:#9fb0dd;letter-spacing:.04em}
+
+  /* ---------- problem ---------- */
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:760px){.cards3{grid-template-columns:1fr}}
+  .p-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 24px}
+  .alt .p-card{background:#fff}
+  .p-card .no{font-family:var(--serif);font-size:15px;color:var(--primary);font-weight:600;display:block;margin-bottom:10px}
+  .p-card p{font-size:15px;color:var(--ink-soft)}
+  .p-card strong{color:var(--ink)}
+  .bridge{margin-top:36px;font-size:clamp(17px,2.5vw,20px);font-weight:700;text-align:center;text-wrap:balance}
+  .bridge em{font-style:normal;color:var(--primary);border-bottom:3px solid rgba(34,71,199,.25)}
+
+  /* ---------- solution diagram ---------- */
+  .diagram{border:1px solid var(--line);border-radius:12px;background:#fff;padding:32px 24px;margin:8px 0 40px}
+  .dg-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:640px){.dg-row{grid-template-columns:1fr}}
+  .dg-box{border-radius:8px;padding:14px 16px;font-size:13.5px;line-height:1.6;text-align:center}
+  .dg-stock{background:#eef2fc;border:1px solid #c9d4f2}
+  .dg-stock b{display:block;font-size:14.5px;color:var(--primary-dark)}
+  .dg-flowline{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+  .dg-chip{background:var(--base-alt);border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:12.5px;color:var(--ink-soft)}
+  .dg-arrow{text-align:center;color:var(--primary);font-size:22px;line-height:1;margin:14px 0}
+  .dg-ai{background:var(--primary-dark);color:#fff;border-radius:8px;padding:16px;text-align:center;font-weight:700}
+  .dg-ai small{display:block;font-weight:400;color:#c9d4f2;font-size:12.5px;margin-top:4px}
+  .dg-out{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+  .dg-out span{background:#e9f4f0;border:1px solid #bcded2;color:var(--success);border-radius:99px;padding:4px 14px;font-size:12.5px;font-weight:600}
+  .dg-caption{text-align:center;font-size:12px;color:var(--ink-soft);margin-top:16px}
+
+  .elems{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:760px){.elems{grid-template-columns:1fr}}
+  .elem{border-top:3px solid var(--primary);background:#fff;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0 0 10px 10px;padding:24px 22px}
+  .elem h3{font-size:16.5px;margin-bottom:8px}
+  .elem p{font-size:14px;color:var(--ink-soft)}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;margin-top:8px}
+  .tl::before{content:"";position:absolute;left:74px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--primary) 0%,#c9d4f2 100%)}
+  @media(max-width:640px){.tl::before{left:18px}}
+  .tl-item{position:relative;display:grid;grid-template-columns:60px 1fr;gap:34px;padding:0 0 34px}
+  @media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:10px;padding-left:44px}}
+  .tl-time{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--primary-dark);text-align:right;line-height:1.3;padding-top:14px;font-variant-numeric:tabular-nums}
+  @media(max-width:640px){.tl-time{text-align:left;padding-top:0}}
+  .tl-item::after{content:"";position:absolute;left:69px;top:22px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--primary)}
+  @media(max-width:640px){.tl-item::after{left:13px;top:8px}}
+  .tl-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;box-shadow:0 2px 10px rgba(26,34,51,.04)}
+  .tl-card h3{font-size:17px;margin-bottom:8px}
+  .tl-card p{font-size:14.5px;color:var(--ink-soft)}
+  .tl-card .mech{display:block;margin-top:12px;font-size:12px;color:#8a93a8;border-top:1px dashed var(--line);padding-top:10px}
+  .tl-note{margin-top:10px;font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0}
+  .tl-note b{color:var(--ink)}
+
+  /* ---------- catalog ---------- */
+  .cat-group{margin-bottom:36px}
+  .cat-group:last-child{margin-bottom:0}
+  .cat-title{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+  .cat-title .tag{font-family:var(--serif);font-weight:600;color:var(--primary);font-size:15px}
+  .cat-title h3{font-size:19px}
+  .cat-items{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.cat-items{grid-template-columns:1fr}}
+  .cat-item{background:var(--base-alt);border-radius:10px;padding:20px 20px}
+  .alt .cat-item{background:#fff;border:1px solid var(--line)}
+  .cat-item b{display:block;font-size:14.5px;margin-bottom:6px;line-height:1.5}
+  .cat-item p{font-size:13px;color:var(--ink-soft);line-height:1.7}
+
+  /* ---------- before/after ---------- */
+  .ba{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px;background:#fff}
+  .ba th{padding:14px 18px;text-align:left;font-size:13px;letter-spacing:.06em}
+  .ba th.h-scene{background:var(--base-alt);color:var(--ink-soft);width:18%}
+  .ba th.h-before{background:#eceef3;color:#6a7288;width:41%}
+  .ba th.h-after{background:var(--success);color:#fff;width:41%}
+  .ba td{padding:14px 18px;border-top:1px solid var(--line);vertical-align:top}
+  .ba td.scene{background:var(--base-alt);font-weight:700;font-size:13.5px}
+  .ba td.before{color:#6a7288}
+  .ba td.after{color:var(--ink)}
+  .ba td.after::before{content:"✓ ";color:var(--success);font-weight:700}
+  .ba-scroll{overflow-x:auto}
+  @media(max-width:640px){.ba{min-width:620px}}
+
+  /* ---------- phases ---------- */
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:ph}
+  @media(max-width:760px){.phases{grid-template-columns:1fr}}
+  .phase{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 24px;position:relative}
+  .phase .ph-no{font-family:var(--serif);color:var(--primary);font-weight:600;font-size:14px;letter-spacing:.08em}
+  .phase h3{font-size:16.5px;margin:8px 0 4px}
+  .phase .dur{font-size:12.5px;color:#8a93a8;display:block;margin-bottom:10px}
+  .phase p{font-size:13.5px;color:var(--ink-soft)}
+  .phase-note{margin-top:28px;text-align:center;font-size:15px;font-weight:700;text-wrap:balance}
+  .phase-note em{font-style:normal;color:var(--primary)}
+
+  /* ---------- pricing ---------- */
+  .price-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:stretch}
+  @media(max-width:760px){.price-grid{grid-template-columns:1fr}}
+  .price-main{background:var(--primary-dark);color:#fff;border-radius:12px;padding:34px 32px}
+  .price-main .row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);gap:12px}
+  .price-main .row:last-child{border-bottom:none}
+  .price-main .lbl{font-size:13.5px;color:#c9d4f2}
+  .price-main .val{font-variant-numeric:tabular-nums;font-weight:700;font-size:17px}
+  .price-main .val.big{font-size:34px;color:var(--accent)}
+  .price-main .val small{font-size:12px;font-weight:400;color:#c9d4f2}
+  .price-side{display:flex;flex-direction:column;gap:16px}
+  .zero-card{background:#fff;border:2px solid var(--accent);border-radius:12px;padding:24px;flex:1}
+  .zero-card b{font-size:16px;display:block;margin-bottom:6px}
+  .zero-card p{font-size:13.5px;color:var(--ink-soft)}
+  .misc-card{background:var(--base-alt);border-radius:12px;padding:20px 24px;font-size:13px;color:var(--ink-soft)}
+  .fineprint{margin-top:22px;font-size:11.5px;color:#8a93a8;line-height:1.7}
+
+  /* ---------- cashflow ---------- */
+  .cf-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin:8px 0 20px}
+  @media(max-width:760px){.cf-steps{grid-template-columns:1fr}.cf-arrow{transform:rotate(90deg)}}
+  .cf-box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;text-align:center}
+  .cf-box .who{font-size:12px;letter-spacing:.1em;color:var(--ink-soft);display:block;margin-bottom:6px}
+  .cf-box .amt{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--primary-dark);font-variant-numeric:tabular-nums}
+  .cf-box p{font-size:12px;color:var(--ink-soft);margin-top:4px}
+  .cf-arrow{color:var(--primary);font-size:24px;text-align:center}
+  .cf-result{text-align:center;font-size:16px;font-weight:700}
+  .cf-result b{font-family:var(--serif);color:var(--primary);font-size:26px;font-variant-numeric:tabular-nums}
+
+  /* ---------- faq ---------- */
+  details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:12px}
+  summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:15px;list-style:none;position:relative;padding-right:48px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--primary);font-weight:400;font-size:18px}
+  details[open] summary::after{content:"－"}
+  details .ans{padding:0 22px 20px;font-size:14px;color:var(--ink-soft)}
+  summary:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:10px}
+  .btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  /* ---------- trust ---------- */
+  .trust-quote{font-family:var(--serif);font-size:clamp(19px,3vw,24px);line-height:2;text-align:center;max-width:30em;margin:0 auto;text-wrap:balance}
+  .trust-body{margin-top:20px;text-align:center;color:var(--ink-soft);font-size:14.5px;max-width:38em;margin-left:auto;margin-right:auto}
+
+  /* ---------- closing ---------- */
+  .closing{background:linear-gradient(168deg,var(--primary-deeper) 0%,var(--primary-dark) 100%);color:#fff;text-align:center}
+  .closing h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4.5vw,38px)}
+  .closing p{color:#c9d4f2;max-width:32em;margin:14px auto 0}
+  .closing .cta-row{justify-content:center}
+  footer{background:var(--primary-deeper);color:#7f90c4;font-size:12px;padding:26px 0;text-align:center}
+  footer a{color:#a9b8e4}
+
+  /* ---------- reveal ---------- */
+  .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .btn{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ① HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-label">CONTEXT MANAGEMENT SYSTEM</span>
+    <h1>経営者の頭の中を、<br>AIに渡せる資産に。</h1>
+    <p class="sub">散らばった事業データを一元化し、AIが「あなたの会社を全部知っている」状態をつくる。コンテキスト管理システム <strong>CMS</strong>。</p>
+    <p class="grant">IT導入補助金 約2/3 対象 ／ 実質負担を抑えて導入可能</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://forms.gle/WxzwHpvWzkyZ4gcV9">お申込み・ご相談はこちら</a>
+      <a class="btn btn-ghost" href="#closing">30分の無料相談を予約</a>
+    </div>
+    <div class="trustbar">Obsidian × Notion × Google Drive × Claude ─ いまお使いのツールを捨てずに、統合する。</div>
+  </div>
+</header>
+
+<!-- ② PROBLEM -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">PROBLEM</span>
+    <h2 class="rv">AIを使っているのに、仕事が減らない。</h2>
+    <div class="cards3">
+      <div class="p-card rv"><span class="no">壱</span><p>事業データが <strong>Drive・Slack・Notion・メール</strong>に散らばり、AIに渡せる状態になっていない。</p></div>
+      <div class="p-card rv"><span class="no">弐</span><p>ChatGPT や Claude に、毎回ゼロから<strong>「うちの会社は…」と説明</strong>している。</p></div>
+      <div class="p-card rv"><span class="no">参</span><p>AIツールを入れても、結局<strong>「個人がたまに使う」止まり</strong>で、業務そのものが変わらない。</p></div>
+    </div>
+    <p class="bridge rv">原因はAIの性能ではなく、<em>AIに文脈（コンテキスト）が渡っていない</em>ことです。</p>
+  </div>
+</section>
+
+<!-- ③ SOLUTION -->
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow rv">SOLUTION</span>
+    <h2 class="rv">CMS ─ 事業のすべての文脈を、AIが参照できる形に。</h2>
+    <p class="lede rv">顧客・案件・数字・ナレッジ・日々のやり取り。事業のあらゆる文脈を構造化し、AIが即座に参照して動ける状態にする仕組みです。</p>
+    <div class="diagram rv">
+      <div class="dg-row">
+        <div class="dg-box dg-stock"><b>Obsidian ─ 母艦</b>設計書・事業進捗・「どこに何があるか」の地図</div>
+        <div class="dg-box dg-stock"><b>Notion ─ チーム運用</b>顧客情報・マニュアル・会議ログ・タスク</div>
+        <div class="dg-box dg-stock"><b>Drive ─ 原本</b>資料PDF・スプレッドシート・数字関係</div>
+      </div>
+      <div class="dg-flowline">
+        <span class="dg-chip">Gmail</span><span class="dg-chip">Slack</span><span class="dg-chip">LINE</span><span class="dg-chip">Messenger</span><span class="dg-chip">会議ログ</span><span class="dg-chip">音声メモ</span><span class="dg-chip">Webクリップ</span>
+      </div>
+      <div class="dg-arrow">↓</div>
+      <div class="dg-ai">AI実行レイヤー<small>ストックとフローを統合して、判断・タスク化・実行</small></div>
+      <div class="dg-out">
+        <span>朝ブリーフィング</span><span>自動タスク化</span><span>商談準備</span><span>メールドラフト</span><span>計画立案</span>
+      </div>
+      <p class="dg-caption">ストック情報（3層）× フロー情報（日々の入力）を、AIがすべて参照して動く</p>
+    </div>
+    <div class="elems">
+      <div class="elem rv"><h3>コンテキストエンジン</h3><p>Obsidian＋Notion＋Drive の三層構造で情報を統合。「どこに何があるか」までAIが把握します。</p></div>
+      <div class="elem rv"><h3>AI実行レイヤー</h3><p>文脈を読んだAIが、タスク化・実行・アウトプットまで支援。作業は基本すべてAI経由に。</p></div>
+      <div class="elem rv"><h3>業務オペレーション統合</h3><p>クラウドERP「RakuCoreOffice AI」を商流に組み込み、基幹業務までAIを貫通させます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ A DAY -->
+<section>
+  <div class="wrap-narrow">
+    <span class="eyebrow rv">WHAT YOU GET ─ 1</span>
+    <h2 class="rv">導入後の、ある1日。</h2>
+    <p class="lede rv">「ここまでできるようになります」を、時間の流れで。すべて、提供者自身が毎日実際に回している運用です。</p>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-time">7:55</div>
+        <div class="tl-card"><h3>出社前に、今日が整っている</h3><p>スマホに朝ブリーフィング。昨夜からのメール・Slack・Messenger を読んだAIが、今日やるべきことを優先度付きのタスクにして提示。必要な資料リンク付き。</p><span class="mech">裏側: 自動ディスパッチがフロー情報を巡回 → タスクDBへ登録</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-time">9:00</div>
+        <div class="tl-card"><h3>「10時の商談、準備して」の一言</h3><p>過去の議事録・提案履歴・先方の企業情報をAIが集約し、想定問答と提案の骨子が数分で手元に。</p><span class="mech">裏側: ストック（顧客・案件ノート）＋フロー情報の横断参照</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-time">11:00</div>
+        <div class="tl-card"><h3>商談が終わった瞬間、議事録がある</h3><p>会議ログは自動で記録・要約。アクションアイテムはタスク化され、期日と担当の提案付きで並んでいる。</p><span class="mech">裏側: 会議ログ自動要約 → アクションアイテム抽出</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-time">14:00</div>
+        <div class="tl-card"><h3>「これやりたい。計画立てて」</h3><p>新規企画をAIに投げると、全文脈を知った状態で計画・必要調査・リスクの壁打ちまで。スプレッドシートや資料をゼロから自分で開くことがなくなる。</p><span class="mech">裏側: 母艦（Obsidian）の設計書・各事業の進捗を参照</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-time">16:00</div>
+        <div class="tl-card"><h3>重要メールには、返信案がもう付いている</h3><p>判断が必要なメールだけが手元に残り、定型的なものはドラフト済み。あなたは確認と決裁に集中する。</p><span class="mech">裏側: 学習ループ（あなたの過去の判断DB）を参照</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-time">18:00</div>
+        <div class="tl-card"><h3>退勤時、今日の仕事が「資産」になっている</h3><p>作業ログ・検討経緯・明日への引き継ぎが自動で残る。明日のAIは、今日の続きから始める。</p><span class="mech">裏側: ハンドオフノートの自動生成</span></div>
+      </div>
+    </div>
+    <p class="tl-note rv">AIの提案は、最終確認を人が行う運用を前提に設計します。「全自動で放置」ではなく、<b>判断はあなた、作業はAI</b> という分担をつくります。</p>
+  </div>
+</section>
+
+<!-- ⑤ CATALOG -->
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow rv">WHAT YOU GET ─ 2</span>
+    <h2 class="rv">できることカタログ</h2>
+    <p class="lede rv">導入で手に入る12の能力。御社の業務に合わせて優先順位をつけ、段階的に立ち上げます。</p>
+
+    <div class="cat-group rv">
+      <div class="cat-title"><span class="tag">A</span><h3>情報が勝手に整う</h3></div>
+      <div class="cat-items">
+        <div class="cat-item"><b>フロー情報の自動取り込み</b><p>Gmail / Slack / LINE / Messenger の日次情報をAIが読み、要・不要を判定して取り込みます。</p></div>
+        <div class="cat-item"><b>あらゆる入力の一元蓄積</b><p>会議ログ・音声メモ・Webクリップ・スマホのキャプチャまで、入り口を選ばず蓄積。</p></div>
+        <div class="cat-item"><b>「どこに何があるか」をAIが把握</b><p>探す時間がゼロに近づく。AIに聞けば、答えと保存場所がセットで返ります。</p></div>
+      </div>
+    </div>
+
+    <div class="cat-group rv">
+      <div class="cat-title"><span class="tag">B</span><h3>タスクが自動で回る</h3></div>
+      <div class="cat-items">
+        <div class="cat-item"><b>情報からの自動タスク化</b><p>入ってきた情報から「やるべきこと」をAIが判断し、タスクDBに起票します。</p></div>
+        <div class="cat-item"><b>毎朝の自動ブリーフィング</b><p>今日の優先順位が、出社前に決まっている状態をつくります。</p></div>
+        <div class="cat-item"><b>役割別AIエージェント（部署制）</b><p>秘書・営業・企画など役割ごとのエージェントが並列で作業。精度のブレを防ぎます。タスク管理の詳細は <a href="https://ryeoungkim.github.io/tw-lp/">Task Workflow</a>。</p></div>
+      </div>
+    </div>
+
+    <div class="cat-group rv">
+      <div class="cat-title"><span class="tag">C</span><h3>アウトプットまで支援</h3></div>
+      <div class="cat-items">
+        <div class="cat-item"><b>ドラフト自動生成</b><p>メール返信・議事録要約・商談準備資料を、文脈込みでAIが下書きします。</p></div>
+        <div class="cat-item"><b>「計画立てて」で骨子まで</b><p>事業計画・プロジェクト計画の初稿を、全文脈を踏まえてAIが作成します。</p></div>
+        <div class="cat-item"><b>根拠データの自動収集</b><p>提案書・資料に必要な過去データやリンクを、AIが先回りで集めます。</p></div>
+      </div>
+    </div>
+
+    <div class="cat-group rv">
+      <div class="cat-title"><span class="tag">D</span><h3>会社の資産になる</h3></div>
+      <div class="cat-items">
+        <div class="cat-item"><b>ログ文化の定着</b><p>計画→作業ログ→検討経緯→引き継ぎがすべて残る働き方を、業務フローごと定着させます。</p></div>
+        <div class="cat-item"><b>学習ループ</b><p>あなたの判断基準をAIが学習。使うほど、成果物の精度が上がっていきます。</p></div>
+        <div class="cat-item"><b>属人化の解消</b><p>担当者が変わっても、文脈ごと引き継げる。頭の中の暗黙知が組織の資産に変わります。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ BEFORE/AFTER -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">BEFORE / AFTER</span>
+    <h2 class="rv">日常が、こう変わる。</h2>
+    <div class="ba-scroll rv">
+      <table class="ba">
+        <tr><th class="h-scene">場面</th><th class="h-before">導入前</th><th class="h-after">導入後</th></tr>
+        <tr><td class="scene">朝イチ</td><td class="before">メール・Slackを1時間かけて巡回</td><td class="after">朝ブリーフィングを5分確認して着手</td></tr>
+        <tr><td class="scene">AIの使い方</td><td class="before">毎回「うちの会社は…」と説明</td><td class="after">AIが全文脈を知っている前提で即実行</td></tr>
+        <tr><td class="scene">会議後</td><td class="before">議事録作成とタスク展開が翌日以降</td><td class="after">終了時点で要約・タスク化済み</td></tr>
+        <tr><td class="scene">情報探し</td><td class="before">「あのファイルどこ？」を人に聞く</td><td class="after">AIに聞けば場所ごと答えが返る</td></tr>
+        <tr><td class="scene">引き継ぎ</td><td class="before">頭の中にしかなく、属人化</td><td class="after">検討経緯ごとログに残り、誰でも継げる</td></tr>
+        <tr><td class="scene">ノウハウ</td><td class="before">使っても溜まらない</td><td class="after">判断基準がDB化され、AIが学習し続ける</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ PHASES -->
+<section class="alt">
+  <div class="wrap">
+    <span class="eyebrow rv">PROCESS</span>
+    <h2 class="rv">導入の流れ ─ 納品して終わり、にしない。</h2>
+    <p class="lede rv">CMSは「完成品のインストール」ではなく、御社の業務・ツール・人に合わせて設計を調整しながら伴走する導入です。</p>
+    <div class="phases">
+      <div class="phase rv"><span class="ph-no">PHASE 1</span><h3>コンテキスト基盤構築</h3><span class="dur">〜2ヶ月</span><p>現状の情報の棚卸し。Obsidian / Notion / Drive 三層構造の設計と移行、情報分類スキーマの導入。</p></div>
+      <div class="phase rv"><span class="ph-no">PHASE 2</span><h3>フロー自動化</h3><span class="dur">2〜3ヶ月目</span><p>メール・チャットの自動取り込み、タスク化、朝ブリーフィングの稼働開始。</p></div>
+      <div class="phase rv"><span class="ph-no">PHASE 3</span><h3>エージェント運用と定着</h3><span class="dur">3ヶ月目〜</span><p>役割別エージェントの構築と学習ループ。ログ文化・業務フローの定着支援。マネジメントや評価の変え方まで相談できます。</p></div>
+    </div>
+    <p class="phase-note rv">パッケージを"インストール"するのではなく、<em>働き方ごと導入</em>します。</p>
+  </div>
+</section>
+
+<!-- ⑧⑨ PRICING + CASHFLOW -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">PRICING</span>
+    <h2 class="rv">価格と補助金スキーム</h2>
+    <div class="price-grid rv">
+      <div class="price-main">
+        <div class="row"><span class="lbl">販売価格（税抜）</span><span class="val">520万円</span></div>
+        <div class="row"><span class="lbl">IT導入補助金（補助率 2/3）</span><span class="val">約346.67万円</span></div>
+        <div class="row"><span class="lbl">実質負担 <small>（通常購入の場合）</small></span><span class="val big">約225.4万円</span></div>
+        <div class="row"><span class="lbl">補助金申請サポート（成功報酬）</span><span class="val">10万円</span></div>
+        <div class="row"><span class="lbl">3年経過後の継続費</span><span class="val">月額5,000円</span></div>
+      </div>
+      <div class="price-side">
+        <div class="zero-card"><b>持ち出し0円プラン</b><p>弊社が御社のサービス・商品を買い取ることで補助金と相殺し、実質持ち出し0円で導入いただける方式もあります。対象となるかは個別にご相談ください。</p></div>
+        <div class="misc-card">補助金の要件設計から申請まで、サポート込みで進めます。まずは無料相談で対象可否をご確認ください。</div>
+      </div>
+    </div>
+
+    <h2 class="rv" style="margin-top:72px">お金の流れ（通常購入の場合）</h2>
+    <div class="cf-steps rv">
+      <div class="cf-box"><span class="who">国 → 御社</span><span class="amt">346.67万円</span><p>IT導入補助金の交付</p></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-box"><span class="who">御社 → 販売元</span><span class="amt">572万円</span><p>パッケージ代金（税込）</p></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-box"><span class="who">導入完了</span><span class="amt">CMS一式</span><p>基盤構築＋伴走支援</p></div>
+    </div>
+    <p class="cf-result rv">御社の実質負担 <b>約225.4万円</b> で、AI活用の土台一式が手に入ります。</p>
+    <p class="fineprint rv">※ 商流上、RakuCoreOffice AI（システムクラウド株式会社提供）のパッケージとして販売されます。IT導入補助金の対象とするため、本パッケージ内で弊社CMSが提供されます。※ 補助金の交付は審査結果によります。</p>
+  </div>
+</section>
+
+<!-- ⑩ FAQ -->
+<section class="alt">
+  <div class="wrap-narrow">
+    <span class="eyebrow rv">FAQ</span>
+    <h2 class="rv">よくあるご質問</h2>
+    <div class="rv">
+      <details><summary>補助金は本当に採択されますか？</summary><div class="ans">採択を保証するものではありませんが、要件設計の段階から申請サポート（成功報酬型）が入るスキームです。対象要件を満たす形で商品構成・申請内容を組み立てます。</div></details>
+      <details><summary>いま使っている Notion や Drive は捨てることになりますか？</summary><div class="ans">捨てません。CMSは既存ツールを統合する設計です。いまの Notion・Drive・メール環境をそのまま活かし、役割分担と接続を再設計します。</div></details>
+      <details><summary>会社の情報を外部に預けるのが不安です。</summary><div class="ans">データは御社自身の環境（御社のDrive・御社のNotion・ローカルファイル）に保持される構成です。外部サービスにデータを丸ごと預ける形ではありません。</div></details>
+      <details><summary>導入期間はどのくらいですか？</summary><div class="ans">基盤構築から自動化の稼働まで通常2〜3ヶ月です。補助金申請と並行して進めます。その後も伴走支援で定着までサポートします。</div></details>
+      <details><summary>RakuCoreOffice AI とは何ですか？</summary><div class="ans">商流上のパッケージ名で、中小企業向けのクラウドERP（システムクラウド株式会社提供）です。CMSはそのパッケージ内で提供される弊社担当部分です。</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ⑪ TRUST -->
+<section>
+  <div class="wrap">
+    <p class="trust-quote rv">「自社で毎日使っている仕組みを、<br>そのまま提供します。」</p>
+    <p class="trust-body rv">提供者自身が、複数事業の経営をこの仕組みの上で行っています。朝ブリーフィングも、自動タスク化も、役割別エージェントも、この LP に書いたことはすべて現役で稼働している運用です。実際の画面は、無料相談の場でご覧いただけます。</p>
+  </div>
+</section>
+
+<!-- ⑫ CLOSING -->
+<section class="closing" id="closing">
+  <div class="wrap">
+    <h2 class="rv">まず、30分だけ話しませんか。</h2>
+    <p class="rv">御社の情報がいまどこに散らばっていて、AIに何を渡せるようになるか。現状の棚卸しだけでも価値があります。</p>
+    <div class="cta-row rv">
+      <a class="btn btn-primary" href="https://forms.gle/WxzwHpvWzkyZ4gcV9">お申込み・ご相談フォーム</a>
+      <a class="btn btn-ghost" href="https://forms.gle/WxzwHpvWzkyZ4gcV9">30分の無料相談を予約</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">提供: リエゾン ／ 商流: RakuCoreOffice AI（システムクラウド株式会社） ／ <a href="https://rakucoreofficeai.com/terms">利用規約</a></div>
+</footer>
+
+<script>
+  (function(){
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.rv');
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
