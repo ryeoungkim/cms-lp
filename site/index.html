@@ -79,7 +79,7 @@
   .dg-stocks{display:grid;grid-template-columns:1fr 30px 1.25fr 30px 1fr;gap:4px;align-items:stretch}
   @media(max-width:640px){.dg-stocks{grid-template-columns:1fr;gap:2px}}
   .dg-hub{background:linear-gradient(160deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;border-radius:10px;padding:18px 16px;text-align:center;box-shadow:0 10px 26px rgba(18,121,188,.3)}
-  .dg-hub b{display:block;font-size:17px;letter-spacing:.02em;margin-bottom:4px}
+  .dg-hub b{display:block;font-size:17px;letter-spacing:.02em;margin-bottom:6px}
   .dg-hub .hub-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.14em;background:rgba(255,255,255,.18);border-radius:99px;padding:2px 12px;margin-bottom:10px}
   .dg-hub p{font-size:12.5px;color:#d8ecfa;line-height:1.6}
   .dg-link{display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:17px;font-weight:700}
@@ -246,9 +246,9 @@
     <span class="eyebrow rv">PROBLEM</span>
     <h2 class="rv">AIを使っているのに、仕事が減らない。</h2>
     <div class="cards3">
-      <div class="p-card rv"><span class="no">壱</span><p>事業データが <strong>Drive・Slack・Notion・メール</strong>に散らばり、AIに渡せる状態になっていない。</p></div>
-      <div class="p-card rv"><span class="no">弐</span><p>ChatGPT や Claude に、毎回ゼロから<strong>「うちの会社は…」と説明</strong>している。</p></div>
-      <div class="p-card rv"><span class="no">参</span><p>AIツールを入れても、結局<strong>「個人がたまに使う」止まり</strong>で、業務そのものが変わらない。</p></div>
+      <div class="p-card rv"><span class="no">1</span><p>事業データが <strong>Drive・Slack・Notion・メール</strong>に散らばり、AIに渡せる状態になっていない。</p></div>
+      <div class="p-card rv"><span class="no">2</span><p>ChatGPT や Claude に、毎回ゼロから<strong>「うちの会社は…」と説明</strong>している。</p></div>
+      <div class="p-card rv"><span class="no">3</span><p>AIツールを入れても、結局<strong>「個人がたまに使う」止まり</strong>で、業務そのものが変わらない。</p></div>
     </div>
     <p class="bridge rv">原因はAIの性能ではなく、<em>AIに文脈（コンテキスト）が渡っていない</em>ことです。</p>
   </div>
@@ -261,29 +261,30 @@
     <h2 class="rv">CMS ─ 事業のすべての文脈を、AIが参照できる形に。</h2>
     <p class="lede rv">顧客・案件・数字・ナレッジ・日々のやり取り。事業のあらゆる文脈を構造化し、AIが即座に参照して動ける状態にする仕組みです。</p>
     <div class="diagram rv">
-      <div class="dg-sec">ストック情報 ─ 三層構造</div>
+      <div class="dg-sec">フロー情報 ─ 日々のやり取りを自動で取り込み</div>
+      <div class="dg-flowline">
+        <span class="dg-chip">Gmail</span><span class="dg-chip">Slack</span><span class="dg-chip">LINE</span><span class="dg-chip">Messenger</span><span class="dg-chip">会議ログ</span><span class="dg-chip">音声メモ</span><span class="dg-chip">Webクリップ</span>
+      </div>
+      <div class="dg-arrow">↓</div>
+      <div class="dg-sec">ストック情報 ─ 三層構造に整理</div>
       <div class="dg-stocks">
         <div class="dg-box dg-stock"><b>Notion ─ チーム運用</b>顧客情報・マニュアル・会議ログ・タスク</div>
         <div class="dg-link" aria-hidden="true">⇄</div>
-        <div class="dg-hub"><span class="hub-tag">母艦 ─ 全体の地図</span><b>Obsidian</b><p>設計書・事業進捗・「どこに何があるか」をすべて把握する司令塔</p></div>
+        <div class="dg-hub"><b>Obsidian</b><span class="hub-tag">母艦 ─ 全体の地図</span><p>設計書・事業進捗・「どこに何があるか」をすべて把握する司令塔</p></div>
         <div class="dg-link" aria-hidden="true">⇄</div>
         <div class="dg-box dg-stock"><b>Drive ─ 原本</b>資料PDF・スプレッドシート・数字関係</div>
-      </div>
-      <div class="dg-sec" style="margin-top:26px">フロー情報 ─ 日々のやり取りを自動で取り込み</div>
-      <div class="dg-flowline">
-        <span class="dg-chip">Gmail</span><span class="dg-chip">Slack</span><span class="dg-chip">LINE</span><span class="dg-chip">Messenger</span><span class="dg-chip">会議ログ</span><span class="dg-chip">音声メモ</span><span class="dg-chip">Webクリップ</span>
       </div>
       <div class="dg-arrow">↓</div>
       <div class="dg-ai">AI実行レイヤー<small>ストックとフローを統合して、判断・タスク化・実行</small></div>
       <div class="dg-out">
         <span>朝ブリーフィング</span><span>自動タスク化</span><span>商談準備</span><span>メールドラフト</span><span>計画立案</span>
       </div>
-      <p class="dg-caption">ストック情報（3層）× フロー情報（日々の入力）を、AIがすべて参照して動く</p>
+      <p class="dg-caption">フロー情報（日々の入力）× ストック情報（3層）を、AIがすべて参照して動く</p>
     </div>
     <div class="elems">
       <div class="elem rv"><h3>コンテキストエンジン</h3><p>Obsidian＋Notion＋Drive の三層構造で情報を統合。「どこに何があるか」までAIが把握します。</p></div>
       <div class="elem rv"><h3>AI実行レイヤー</h3><p>文脈を読んだAIが、タスク化・実行・アウトプットまで支援。作業は基本すべてAI経由に。</p></div>
-      <div class="elem rv"><h3>業務オペレーション統合</h3><p>クラウドERP「RakuCoreOffice AI」を商流に組み込み、基幹業務までAIを貫通させます。</p></div>
+      <div class="elem rv"><h3>業務オペレーション統合</h3><p>見積・請求・顧客管理などの基幹業務までAIを貫通させ、日常のやり取りと業務データを一気通貫でつなぎます。</p></div>
     </div>
   </div>
 </section>
@@ -413,7 +414,6 @@
       <details><summary>いま使っている Notion や Drive は捨てることになりますか？</summary><div class="ans">捨てません。CMSは既存ツールを統合する設計です。いまの Notion・Drive・メール環境をそのまま活かし、役割分担と接続を再設計します。</div></details>
       <details><summary>会社の情報を外部に預けるのが不安です。</summary><div class="ans">データは御社自身の環境（御社のDrive・御社のNotion・ローカルファイル）に保持される構成です。外部サービスにデータを丸ごと預ける形ではありません。</div></details>
       <details><summary>導入期間はどのくらいですか？</summary><div class="ans">基盤構築から自動化の稼働まで通常2〜3ヶ月です。補助金申請と並行して進めます。その後も伴走支援で定着までサポートします。</div></details>
-      <details><summary>RakuCoreOffice AI とは何ですか？</summary><div class="ans">商流上のパッケージ名で、中小企業向けのクラウドERP（システムクラウド株式会社提供）です。CMSはそのパッケージ内で提供される弊社担当部分です。</div></details>
     </div>
   </div>
 </section>
@@ -449,7 +449,7 @@
 </section>
 
 <footer>
-  <div class="wrap">提供: リエゾン ／ 商流: RakuCoreOffice AI（システムクラウド株式会社） ／ <a href="https://rakucoreofficeai.com/terms">利用規約</a></div>
+  <div class="wrap">提供: リエゾン</div>
 </footer>
 
 <script>
