@@ -6,33 +6,93 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const STEPS = [
+interface StepSpec {
+  num: string;
+  title: string;
+  urgent: boolean;
+  body: string;
+  url: string | null;
+  urlLabel: string | null;
+  time: string;
+  items?: string[];
+  procedure?: string[];
+  pitfalls?: string[];
+}
+
+const STEPS: StepSpec[] = [
   {
     num: "1",
     title: "gBizIDプライムの取得",
     urgent: true,
-    body: "補助金の申請にはgBizIDプライムアカウントが必要です。取得に2〜3週間かかる場合があるため、このページをご覧になった当日のお手続きをお願いします。法人の場合は法人番号で、個人事業主の場合は個人としてご取得ください。",
+    body: "補助金の申請にはgBizIDプライムアカウントが必要です。STEP2・STEP3もこのアカウントが前提になるため、すべての起点です。申請方法は2通りあり、代表者のマイナンバーカードがあればオンラインで最短即日、書類郵送の場合は審査に最大1か月かかります。このページをご覧になった当日のお手続きをお願いします。",
     url: "https://gbiz-id.go.jp/",
     urlLabel: "gBizID（デジタル庁）",
-    time: "取得まで2〜3週間 — 最優先",
+    time: "オンライン: 最短即日 ／ 書類郵送: 最大1か月 — 最優先",
+    items: [
+      "【オンライン申請（推奨）】代表者ご本人のマイナンバーカード ＋ 署名用電子証明書の暗証番号（英数字6〜16桁。カード受取時に設定したもの）＋ スマートフォン",
+      "【書類郵送申請】印刷した申請書 ＋ 法人の印鑑証明書（法務局発行・3か月以内）＋ 会社実印（登録印）での押印",
+      "共通: 法人番号（13桁）、代表者の生年月日等の基本情報、SMSを受信できる携帯電話番号、メールアドレス",
+    ],
+    procedure: [
+      "gBizIDサイトで「gBizIDプライム作成」→ オンライン申請 or 書類申請を選択",
+      "オンライン: 画面の案内に沿って入力し、スマホでマイナンバーカードを読み取り → 最短即日発行",
+      "書類: 申請書を印刷・会社実印を押印し、印鑑証明書を同封して事務センターへ郵送 → 審査（最大1か月）",
+      "発行後: ログイン用のスマホアプリ（gBizIDアプリ）の認証設定まで済ませておく",
+    ],
+    pitfalls: [
+      "書類申請の差し戻し3大理由:「角印など登録印以外を押した」「印鑑証明書が発行3か月超」「法人番号の記入ミス」。印影のかすれ・二重押しも不備になります",
+      "アカウントは代表者ご本人名義の「プライム」が必要です（gBizIDメンバーや従業員名義では申請できません）",
+      "個人事業主の場合は法人番号ではなく個人として取得します",
+      "署名用電子証明書の暗証番号を忘れている場合、市区町村窓口での再設定が必要になり日数を要します → 早めの確認を",
+      "締切が近い場合はマイナンバーカードによるオンライン申請の一択です",
+    ],
   },
   {
     num: "2",
     title: "SECURITY ACTION の宣言",
     urgent: false,
-    body: "IPA（情報処理推進機構）の「SECURITY ACTION」で「★一つ星」または「★★二つ星」いずれかの宣言を行い、発行される自己宣言ID（11桁）を控えてください。※2026年4月開始の新管理システムで取得した「5」から始まるIDが必要です（第2次公募以降。第1次公募は4または5から始まるIDで申請可能）。",
+    body: "IPA（情報処理推進機構）の「SECURITY ACTION」で「★一つ星」または「★★二つ星」いずれかの宣言を行います。2026年4月からは新しい「SECURITY ACTION管理システム」に移行しており、gBizIDでログインして宣言する仕組みです（＝STEP1の完了が前提）。宣言後、自己宣言ID（「5」から始まる11桁）はその場で即時発行されます。",
     url: "https://sme-security.ipa.go.jp/",
     urlLabel: "SECURITY ACTION 管理システム",
-    time: "即日〜数日",
+    time: "STEP1完了後、約15分（ID即時発行）",
+    items: [
+      "gBizIDアカウント（STEP1で取得したもの。補助金申請に使うアカウントと同一であること）",
+      "★一つ星: IPA「情報セキュリティ5か条」に取り組む宣言（最短・おすすめ）",
+      "★★二つ星: 「5分でできる！情報セキュリティ自社診断」（25項目）の実施 ＋ 情報セキュリティ基本方針の策定・公開",
+    ],
+    procedure: [
+      "SECURITY ACTION管理システムにgBizIDでログイン",
+      "「★一つ星」または「★★二つ星」を選んで宣言（補助金の要件はどちらでも可。急ぎなら一つ星）",
+      "発行された自己宣言ID（5から始まる11桁）を控えて弊社に共有",
+    ],
+    pitfalls: [
+      "2026年3月以前の旧システムで取得した「4」から始まるIDは、第2次公募（2026年5月12日）以降は使えません → 新システムでの取り直しが必要です",
+      "補助金申請に使うgBizIDと同じアカウントで宣言してください（別アカウントで宣言すると紐づきません）",
+    ],
   },
   {
     num: "3",
     title: "IT戦略ナビwith（デジwith）の診断",
     urgent: false,
-    body: "中小機構のポータル「デジwith」で経営課題を診断し、IT戦略マップをPDF出力します（申請時に添付）。登録はgBizIDプライムのメールアドレスで行うため、STEP1の完了後に実施してください。弊社担当がオンラインで画面をご一緒しながら進めることも可能です。",
+    body: "中小機構のポータル「デジwith」で経営課題を診断し、「IT戦略マップ」をPDF出力します（申請時に添付）。アンケート形式で5〜10分程度と手軽ですが、事業内容の整理を兼ねて弊社担当がオンラインで画面をご一緒しながら進めるのがおすすめです。",
     url: "https://digiwith.smrj.go.jp/",
     urlLabel: "デジwith（中小機構）",
-    time: "約1時間（弊社同席可）",
+    time: "STEP1完了後、5〜10分（弊社同席可）",
+    items: [
+      "デジwithの会員登録（gBizIDプライムに登録したメールアドレスで登録）",
+      "基本情報: 業種・所在地・従業員数・事業所数・資本金・売上高（選択式）",
+    ],
+    procedure: [
+      "デジwithで会員登録 →「IT戦略ナビwith」を開く",
+      "基本情報（業種・所在地・従業員数など）を選択",
+      "「IT戦略マップ」を選択 → 経営課題を1つ → 関連する業務上の問題点を1〜2個 → 解決策を選択",
+      "完成した IT戦略マップをPDFでダウンロード → 弊社に共有",
+    ],
+    pitfalls: [
+      "gBizIDプライムの入力欄は「任意」表示ですが、補助金申請に使う場合は入力必須です（未入力だと申請に使えません）",
+      "登録メールアドレスはgBizIDプライムと同一にしてください",
+      "結果画面のスクリーンショットではなく、必ずPDFファイルをダウンロードして保存してください（申請時に添付します）",
+    ],
   },
   {
     num: "4",
@@ -219,12 +279,55 @@ export default function PrepPage() {
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-300">{s.body}</p>
                   <p className="mt-3 text-xs text-slate-400">所要目安: {s.time}</p>
+
+                  {s.items && (
+                    <div className="mt-4 rounded-lg border border-slate-700 bg-slate-900/50 p-4">
+                      <p className="text-xs font-semibold text-slate-200">ご用意いただくもの</p>
+                      <ul className="mt-2 space-y-1.5">
+                        {s.items.map((it) => (
+                          <li key={it} className="flex gap-2 text-xs leading-relaxed text-slate-300">
+                            <span className="mt-0.5 shrink-0 text-blue-400">・</span>
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {s.procedure && (
+                    <div className="mt-3 rounded-lg border border-slate-700 bg-slate-900/50 p-4">
+                      <p className="text-xs font-semibold text-slate-200">手順</p>
+                      <ol className="mt-2 space-y-1.5">
+                        {s.procedure.map((p, i) => (
+                          <li key={p} className="flex gap-2 text-xs leading-relaxed text-slate-300">
+                            <span className="shrink-0 font-semibold text-emerald-400">{i + 1}.</span>
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
+
+                  {s.pitfalls && (
+                    <div className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/5 p-4">
+                      <p className="text-xs font-semibold text-amber-300">つまずきやすいポイント</p>
+                      <ul className="mt-2 space-y-1.5">
+                        {s.pitfalls.map((p) => (
+                          <li key={p} className="flex gap-2 text-xs leading-relaxed text-amber-200/90">
+                            <span className="mt-0.5 shrink-0">!</span>
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {s.url && (
                     <a
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-block rounded-lg border border-blue-500/50 bg-blue-500/10 px-4 py-2 text-xs font-semibold text-blue-300 transition-colors hover:bg-blue-500/20"
+                      className="mt-4 inline-block rounded-lg border border-blue-500/50 bg-blue-500/10 px-4 py-2 text-xs font-semibold text-blue-300 transition-colors hover:bg-blue-500/20"
                     >
                       {s.urlLabel} →
                     </a>
