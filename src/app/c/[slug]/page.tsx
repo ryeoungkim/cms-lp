@@ -298,14 +298,22 @@ function Documents() {
         補助金申請には御社の基本情報といくつかの書類のご提出が必要です。以下のフォームからご提出ください。
         締切ラウンドに間に合わせるため、お早めのご準備をお願いします。
       </p>
-      <a
-        href={SUBSIDY_DOCS_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-5 inline-block rounded-lg border border-blue-500/50 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-300 transition-colors hover:bg-blue-500/20"
-      >
-        補助金 必要情報・書類の提出フォーム →
-      </a>
+      <div className="mt-5 flex flex-wrap gap-3">
+        <a
+          href="../../prep/"
+          className="inline-block rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+        >
+          事前準備ガイド（最初にお読みください） →
+        </a>
+        <a
+          href={SUBSIDY_DOCS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block rounded-lg border border-blue-500/50 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-300 transition-colors hover:bg-blue-500/20"
+        >
+          必要情報・書類の提出フォーム →
+        </a>
+      </div>
     </section>
   );
 }
