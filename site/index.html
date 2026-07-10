@@ -16,10 +16,10 @@
     --ink-soft:#4a5468;
     --base:#ffffff;
     --base-alt:#f6f8fb;
-    --primary:#2247c7;
-    --primary-dark:#182f80;
-    --primary-deeper:#101f56;
-    --accent:#e8b93c;
+    --primary:#1279bc;
+    --primary-dark:#0a5185;
+    --primary-deeper:#07395d;
+    --accent:#f6b40e;
     --success:#1e7f5c;
     --line:#dde3ee;
     --serif:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
@@ -43,19 +43,19 @@
 
   /* ---------- hero ---------- */
   .hero{background:linear-gradient(168deg,var(--primary-dark) 0%,var(--primary-deeper) 78%);color:#fff;padding:96px 0 0;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;inset:auto -10% -55% -10%;height:70%;background:radial-gradient(ellipse at center,rgba(34,71,199,.55),transparent 65%);pointer-events:none}
+  .hero::after{content:"";position:absolute;inset:auto -10% -55% -10%;height:70%;background:radial-gradient(ellipse at center,rgba(108,172,228,.5),transparent 65%);pointer-events:none}
   .hero .wrap{position:relative;z-index:1}
   .hero-label{font-size:12px;letter-spacing:.22em;color:var(--accent);font-weight:700}
   .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.6vw,52px);line-height:1.5;margin:22px 0 20px;text-wrap:balance}
-  .hero p.sub{color:#c9d4f2;max-width:36em;font-size:clamp(15px,2vw,17px)}
+  .hero p.sub{color:#c8e3f6;max-width:36em;font-size:clamp(15px,2vw,17px)}
   .hero .grant{margin-top:22px;font-size:14px;color:var(--accent)}
   .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0 0}
   .btn{display:inline-block;padding:16px 34px;border-radius:6px;font-weight:700;text-decoration:none;font-size:15.5px;transition:transform .15s ease,box-shadow .15s ease}
   .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:var(--accent);color:#231a02;box-shadow:0 6px 22px rgba(232,185,60,.28)}
+  .btn-primary{background:var(--accent);color:#231a02;box-shadow:0 6px 22px rgba(246,180,14,.3)}
   .btn-ghost{border:1px solid rgba(255,255,255,.45);color:#fff}
-  .btn-blue{background:var(--primary);color:#fff;box-shadow:0 6px 22px rgba(34,71,199,.3)}
-  .trustbar{margin-top:64px;border-top:1px solid rgba(255,255,255,.14);padding:18px 0 22px;font-size:13.5px;color:#9fb0dd;letter-spacing:.04em}
+  .btn-blue{background:var(--primary);color:#fff;box-shadow:0 6px 22px rgba(18,121,188,.3)}
+  .trustbar{margin-top:64px;border-top:1px solid rgba(255,255,255,.14);padding:18px 0 22px;font-size:13.5px;color:#a6cbe7;letter-spacing:.04em}
 
   /* ---------- problem ---------- */
   .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -66,20 +66,29 @@
   .p-card p{font-size:15px;color:var(--ink-soft)}
   .p-card strong{color:var(--ink)}
   .bridge{margin-top:36px;font-size:clamp(17px,2.5vw,20px);font-weight:700;text-align:center;text-wrap:balance}
-  .bridge em{font-style:normal;color:var(--primary);border-bottom:3px solid rgba(34,71,199,.25)}
+  .bridge em{font-style:normal;color:var(--primary);border-bottom:3px solid rgba(18,121,188,.28)}
 
   /* ---------- solution diagram ---------- */
   .diagram{border:1px solid var(--line);border-radius:12px;background:#fff;padding:32px 24px;margin:8px 0 40px}
   .dg-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
   @media(max-width:640px){.dg-row{grid-template-columns:1fr}}
   .dg-box{border-radius:8px;padding:14px 16px;font-size:13.5px;line-height:1.6;text-align:center}
-  .dg-stock{background:#eef2fc;border:1px solid #c9d4f2}
+  .dg-stock{background:#eaf4fc;border:1px solid #c8e3f6}
   .dg-stock b{display:block;font-size:14.5px;color:var(--primary-dark)}
+  .dg-sec{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--ink-soft);text-align:center;margin-bottom:12px}
+  .dg-stocks{display:grid;grid-template-columns:1fr 30px 1.25fr 30px 1fr;gap:4px;align-items:stretch}
+  @media(max-width:640px){.dg-stocks{grid-template-columns:1fr;gap:2px}}
+  .dg-hub{background:linear-gradient(160deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;border-radius:10px;padding:18px 16px;text-align:center;box-shadow:0 10px 26px rgba(18,121,188,.3)}
+  .dg-hub b{display:block;font-size:17px;letter-spacing:.02em;margin-bottom:4px}
+  .dg-hub .hub-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.14em;background:rgba(255,255,255,.18);border-radius:99px;padding:2px 12px;margin-bottom:10px}
+  .dg-hub p{font-size:12.5px;color:#d8ecfa;line-height:1.6}
+  .dg-link{display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:17px;font-weight:700}
+  @media(max-width:640px){.dg-link{transform:rotate(90deg);line-height:1;padding:6px 0}}
   .dg-flowline{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
   .dg-chip{background:var(--base-alt);border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:12.5px;color:var(--ink-soft)}
   .dg-arrow{text-align:center;color:var(--primary);font-size:22px;line-height:1;margin:14px 0}
   .dg-ai{background:var(--primary-dark);color:#fff;border-radius:8px;padding:16px;text-align:center;font-weight:700}
-  .dg-ai small{display:block;font-weight:400;color:#c9d4f2;font-size:12.5px;margin-top:4px}
+  .dg-ai small{display:block;font-weight:400;color:#c8e3f6;font-size:12.5px;margin-top:4px}
   .dg-out{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
   .dg-out span{background:#e9f4f0;border:1px solid #bcded2;color:var(--success);border-radius:99px;padding:4px 14px;font-size:12.5px;font-weight:600}
   .dg-caption{text-align:center;font-size:12px;color:var(--ink-soft);margin-top:16px}
@@ -92,7 +101,7 @@
 
   /* ---------- timeline ---------- */
   .tl{position:relative;margin-top:8px}
-  .tl::before{content:"";position:absolute;left:74px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--primary) 0%,#c9d4f2 100%)}
+  .tl::before{content:"";position:absolute;left:74px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--primary) 0%,#c8e3f6 100%)}
   @media(max-width:640px){.tl::before{left:18px}}
   .tl-item{position:relative;display:grid;grid-template-columns:60px 1fr;gap:34px;padding:0 0 34px}
   @media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:10px;padding-left:44px}}
@@ -151,10 +160,10 @@
   .price-main{background:var(--primary-dark);color:#fff;border-radius:12px;padding:34px 32px}
   .price-main .row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);gap:12px}
   .price-main .row:last-child{border-bottom:none}
-  .price-main .lbl{font-size:13.5px;color:#c9d4f2}
+  .price-main .lbl{font-size:13.5px;color:#c8e3f6}
   .price-main .val{font-variant-numeric:tabular-nums;font-weight:700;font-size:17px}
   .price-main .val.big{font-size:34px;color:var(--accent)}
-  .price-main .val small{font-size:12px;font-weight:400;color:#c9d4f2}
+  .price-main .val small{font-size:12px;font-weight:400;color:#c8e3f6}
   .price-side{display:flex;flex-direction:column;gap:16px}
   .zero-card{background:#fff;border:2px solid var(--accent);border-radius:12px;padding:24px;flex:1}
   .zero-card b{font-size:16px;display:block;margin-bottom:6px}
@@ -190,7 +199,7 @@
   /* ---------- closing ---------- */
   .closing{background:linear-gradient(168deg,var(--primary-deeper) 0%,var(--primary-dark) 100%);color:#fff;text-align:center}
   .closing h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4.5vw,38px)}
-  .closing p{color:#c9d4f2;max-width:32em;margin:14px auto 0}
+  .closing p{color:#c8e3f6;max-width:32em;margin:14px auto 0}
   .closing .cta-row{justify-content:center}
   .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,380px));gap:28px;justify-content:center;margin-top:48px}
   .contact-card{background:#fff;border-radius:14px;padding:36px 32px;color:var(--ink);box-shadow:0 18px 50px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
@@ -201,8 +210,8 @@
   .contact-mail{font-family:var(--serif);font-size:clamp(18px,2.6vw,22px);font-weight:600;color:var(--primary-dark);text-decoration:none;word-break:break-all;margin-top:8px}
   .contact-mail:hover{text-decoration:underline}
   .contact-card .mail-icon{font-size:34px;line-height:1;margin:22px 0 10px}
-  footer{background:var(--primary-deeper);color:#7f90c4;font-size:12px;padding:26px 0;text-align:center}
-  footer a{color:#a9b8e4}
+  footer{background:var(--primary-deeper);color:#8ab4d6;font-size:12px;padding:26px 0;text-align:center}
+  footer a{color:#b8d8ef}
 
   /* ---------- reveal ---------- */
   .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
@@ -252,11 +261,15 @@
     <h2 class="rv">CMS ─ 事業のすべての文脈を、AIが参照できる形に。</h2>
     <p class="lede rv">顧客・案件・数字・ナレッジ・日々のやり取り。事業のあらゆる文脈を構造化し、AIが即座に参照して動ける状態にする仕組みです。</p>
     <div class="diagram rv">
-      <div class="dg-row">
-        <div class="dg-box dg-stock"><b>Obsidian ─ 母艦</b>設計書・事業進捗・「どこに何があるか」の地図</div>
+      <div class="dg-sec">ストック情報 ─ 三層構造</div>
+      <div class="dg-stocks">
         <div class="dg-box dg-stock"><b>Notion ─ チーム運用</b>顧客情報・マニュアル・会議ログ・タスク</div>
+        <div class="dg-link" aria-hidden="true">⇄</div>
+        <div class="dg-hub"><span class="hub-tag">母艦 ─ 全体の地図</span><b>Obsidian</b><p>設計書・事業進捗・「どこに何があるか」をすべて把握する司令塔</p></div>
+        <div class="dg-link" aria-hidden="true">⇄</div>
         <div class="dg-box dg-stock"><b>Drive ─ 原本</b>資料PDF・スプレッドシート・数字関係</div>
       </div>
+      <div class="dg-sec" style="margin-top:26px">フロー情報 ─ 日々のやり取りを自動で取り込み</div>
       <div class="dg-flowline">
         <span class="dg-chip">Gmail</span><span class="dg-chip">Slack</span><span class="dg-chip">LINE</span><span class="dg-chip">Messenger</span><span class="dg-chip">会議ログ</span><span class="dg-chip">音声メモ</span><span class="dg-chip">Webクリップ</span>
       </div>
