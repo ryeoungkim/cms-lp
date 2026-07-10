@@ -57,6 +57,11 @@
   .btn-blue{background:var(--primary);color:#fff;box-shadow:0 6px 22px rgba(18,121,188,.3)}
   .trustbar{margin-top:64px;border-top:1px solid rgba(10,81,133,.2);padding:18px 0 22px;font-size:13.5px;color:#39678f;letter-spacing:.04em}
 
+  /* ---------- video ---------- */
+  .video-sec{padding-top:64px}
+  .video-frame{max-width:860px;margin:8px auto 0;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(10,81,133,.22);background:#000}
+  .video-frame video{width:100%;display:block;aspect-ratio:16/9}
+
   /* ---------- problem ---------- */
   .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   @media(max-width:760px){.cards3{grid-template-columns:1fr}}
@@ -239,6 +244,18 @@
     <div class="trustbar">Obsidian × Notion × Google Drive × Claude ─ いまお使いのツールを捨てずに、統合する。</div>
   </div>
 </header>
+
+<!-- ①b VIDEO -->
+<section class="video-sec">
+  <div class="wrap">
+    <span class="eyebrow rv">MOVIE</span>
+    <h2 class="rv">2分でわかるCMS</h2>
+    <p class="lede rv">仕組みと導入後の変化を、2分13秒にまとめました。</p>
+    <div class="video-frame rv">
+      <video src="video/cms-explainer.mp4" poster="video/poster.jpg" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+</section>
 
 <!-- ② PROBLEM -->
 <section>
