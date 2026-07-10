@@ -143,7 +143,7 @@ function Schedule({ client }: { client: ClientPage }) {
     <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-800/40 p-6 sm:p-8">
       <h2 className="text-lg font-semibold text-slate-100">申請スケジュール</h2>
       <p className="mt-3 text-sm leading-relaxed text-slate-300">
-        IT導入補助金は申請ラウンド（締切）ごとに受け付けられます。
+        補助金（デジタル化・AI導入補助金2026）は申請ラウンド（締切）ごとに受け付けられます。
         <strong className="text-slate-100">最短は 7月21日 締切のラウンド</strong>
         で、以降も8月・9月とラウンドが続きます（各回の締切日は確定次第ご案内します）。
       </p>
