@@ -62,6 +62,33 @@
   .video-frame{max-width:860px;margin:8px auto 0;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(10,81,133,.22);background:#000}
   .video-frame video{width:100%;display:block;aspect-ratio:16/9}
 
+  /* ---------- layers ---------- */
+  .layers{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--base-alt)}
+  .layers-line{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;font-weight:700;font-size:15px}
+  .layer-chip{background:#fff;border:1px solid #b7d9f0;color:var(--primary-dark);border-radius:99px;padding:6px 18px;font-size:13.5px}
+  .layers-text{margin-left:6px}
+
+  /* ---------- inside ---------- */
+  .inside-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:stretch;margin-bottom:28px}
+  @media(max-width:760px){.inside-grid{grid-template-columns:1fr}}
+  .vault{background:#0f2438;border-radius:12px;overflow:hidden;color:#d7e8f7;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13.5px;box-shadow:0 14px 36px rgba(10,81,133,.18)}
+  .vault-bar{background:#0a1b2b;padding:10px 14px;font-size:12px;color:#7fa8c9;display:flex;align-items:center;gap:6px}
+  .vault-bar span{width:10px;height:10px;border-radius:50%;background:#28425c;display:inline-block}
+  .vault-tree{list-style:none;padding:18px 22px;line-height:2.05}
+  .vault-tree .dir{color:#8ec7ec;font-weight:700}
+  .vault-tree .file{padding-left:14px;color:#c3d9ec}
+  .vault-tree em{font-style:normal;color:var(--accent);font-size:12px}
+  .inside-cards{display:flex;flex-direction:column;gap:14px}
+  .inside-card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--primary);border-radius:10px;padding:18px 20px;flex:1}
+  .inside-card b{display:block;font-size:15px;margin-bottom:4px}
+  .inside-card p{font-size:13.5px;color:var(--ink-soft)}
+  .update-loop{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:8px;align-items:center}
+  @media(max-width:760px){.update-loop{grid-template-columns:1fr}.ul-arrow{transform:rotate(90deg)}}
+  .ul-step{background:#eaf4fc;border:1px solid #c8e3f6;border-radius:10px;padding:14px 12px;text-align:center;font-weight:700;font-size:14px}
+  .ul-step small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-soft);margin-top:4px}
+  .ul-no{display:inline-block;background:var(--primary);color:#fff;border-radius:50%;width:20px;height:20px;line-height:20px;font-size:11px;margin-right:6px}
+  .ul-arrow{color:var(--primary);font-size:20px;text-align:center}
+
   /* ---------- problem ---------- */
   .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   @media(max-width:760px){.cards3{grid-template-columns:1fr}}
@@ -257,6 +284,13 @@
   </div>
 </section>
 
+<!-- ①c LAYERS -->
+<div class="layers">
+  <div class="wrap">
+    <p class="layers-line rv"><span class="layer-chip">個人</span><span class="layer-chip">小規模事業者</span><span class="layer-chip">中小企業</span><span class="layers-text">あらゆるレイヤーで活用できます</span></p>
+  </div>
+</div>
+
 <!-- ② PROBLEM -->
 <section>
   <div class="wrap">
@@ -303,6 +337,45 @@
       <div class="elem rv"><h3>AI実行レイヤー</h3><p>文脈を読んだAIが、タスク化・実行・アウトプットまで支援。作業は基本すべてAI経由に。</p></div>
       <div class="elem rv"><h3>業務オペレーション統合</h3><p>見積・請求・顧客管理などの基幹業務までAIを貫通させ、日常のやり取りと業務データを一気通貫でつなぎます。</p></div>
     </div>
+  </div>
+</section>
+
+<!-- ③b INSIDE -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow rv">INSIDE</span>
+    <h2 class="rv">母艦Obsidianの中身は、ただのテキストファイルです。</h2>
+    <p class="lede rv">ブラックボックスではありません。人が読めるMDファイル（マークダウン）の集まりだから、AIが読めて、人が確かめられて、いつでも持ち出せます。</p>
+    <div class="inside-grid rv">
+      <div class="vault">
+        <div class="vault-bar"><span></span><span></span><span></span>obsidian-vault/</div>
+        <ul class="vault-tree">
+          <li class="dir">📁 00_MAP.md <em>── 全体の地図</em></li>
+          <li class="dir">📁 projects/</li>
+          <li class="file">├ 事業A_進捗.md</li>
+          <li class="file">├ 顧客_〇〇社.md</li>
+          <li class="file">└ 議事録_0712.md</li>
+          <li class="dir">📁 instructions/</li>
+          <li class="file">├ 指示書_営業.md</li>
+          <li class="file">└ 指示書_経理.md</li>
+        </ul>
+      </div>
+      <div class="inside-cards">
+        <div class="inside-card"><b>MDファイル群</b><p>事業・顧客・案件ごとのノート。すべて人が読めるプレーンテキスト。特定ツールに囲い込まれません。</p></div>
+        <div class="inside-card"><b>指示書</b><p>AIへの役割別の指示書。「営業のAI」「経理のAI」がどう動くかを、ファイルとして定義します。</p></div>
+        <div class="inside-card"><b>MAP ─ 全体の地図</b><p>どこに何があるかの索引。AIはまずこの地図を見てから動くので、迷いません。</p></div>
+      </div>
+    </div>
+    <div class="update-loop rv">
+      <div class="ul-step"><span class="ul-no">1</span>日々のやり取り<small>メール・チャット・会議ログ</small></div>
+      <div class="ul-arrow">→</div>
+      <div class="ul-step"><span class="ul-no">2</span>AIが読む<small>内容と関係先を判断</small></div>
+      <div class="ul-arrow">→</div>
+      <div class="ul-step"><span class="ul-no">3</span>該当MDを更新<small>追記・整理を自動で</small></div>
+      <div class="ul-arrow">→</div>
+      <div class="ul-step"><span class="ul-no">4</span>MAPも更新<small>地図は常に最新</small></div>
+    </div>
+    <p class="dg-caption rv">この更新ループが回り続けるので、「情報が古くて使えない」が起きません。</p>
   </div>
 </section>
 
