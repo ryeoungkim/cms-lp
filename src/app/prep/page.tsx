@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SUBSIDY_DOCS_URL } from "@/data/clients";
 import {
   PrepHeader,
   PrepFooter,
@@ -74,6 +73,43 @@ const STEPS: StepSpec[] = [
     pitfalls: [
       "gBizIDプライムの入力欄は「任意」表示ですが、補助金申請に使う場合は入力必須です（未入力だと申請に使えません）",
       "結果画面のスクリーンショットではなく、必ずPDFファイルをダウンロードして保存してください（申請時に添付します）",
+    ],
+  },
+];
+
+const BONUS_STEPS: StepSpec[] = [
+  {
+    num: "4",
+    title: "成長加速マッチングサービスへの登録（加点項目）",
+    urgent: false,
+    body: "中小企業庁の「成長加速マッチングサービス」に登録すると、補助金審査の加点になります。gBizIDプライムでログインして会員登録し、挑戦課題を登録して「掲載中」の状態にしてください。",
+    url: "https://mirasapo-connect.go.jp/",
+    urlLabel: "成長加速マッチングサービス",
+    time: "STEP1完了後、15分程度",
+    procedure: [
+      "gBizIDプライムでログインし、会員登録",
+      "挑戦課題を登録 → ステータスが「掲載中」になったことを確認",
+      "「掲載中」の画面のスクリーンショットを弊社に共有",
+    ],
+    pitfalls: [
+      "交付申請の締切日時点で「掲載中」になっている必要があります（登録しただけ・審査中では加点になりません）",
+    ],
+  },
+  {
+    num: "5",
+    title: "省力化ナビの実施（加点項目）",
+    urgent: false,
+    body: "中小機構の「省力化ナビ」で生産性向上の解決策を確認すると、補助金審査の加点になります。診断の際に、補助金申請に使うgBizIDプライムを入力してください。",
+    url: "https://labour-saving.smrj.go.jp/",
+    urlLabel: "省力化ナビ（中小機構）",
+    time: "STEP1完了後、10分程度",
+    procedure: [
+      "省力化ナビで手続きを進める（gBizIDプライムを入力）",
+      "解決策（After）画面まで進み、スクリーンショットを保存",
+      "スクリーンショットを弊社に共有",
+    ],
+    pitfalls: [
+      "補助金申請に使うgBizIDプライムを入力しないと加点に紐づきません",
     ],
   },
 ];
@@ -170,6 +206,18 @@ export default function PrepPage() {
           ))}
         </ol>
 
+        <h2 className="mb-2 mt-10 text-lg font-semibold text-slate-100">
+          STEP 4〜5: 加点項目（任意・おすすめ）
+        </h2>
+        <p className="mb-4 text-sm leading-relaxed text-slate-400">
+          必須ではありませんが、実施すると補助金審査の加点になります。いずれもSTEP1のgBizIDがあれば短時間で完了します。
+        </p>
+        <ol className="space-y-5">
+          {BONUS_STEPS.map((s) => (
+            <StepCard key={s.num} s={s} />
+          ))}
+        </ol>
+
         <DocsSection
           title="ご提出いただく書類（4点）"
           intro="いずれもプリンター等で鮮明にスキャンしたPDFでご提出ください。要件を満たさない書類は事務局の審査で差し戻しになるため、取得時に以下のチェックポイントをご確認ください。読み取り・転記・数値の算出はすべて弊社で行います。"
@@ -189,7 +237,7 @@ export default function PrepPage() {
           </p>
         </section>
 
-        <SubmitSection url={SUBSIDY_DOCS_URL} />
+        <SubmitSection />
 
         <section className="mt-8 text-xs leading-relaxed text-slate-500">
           <p>

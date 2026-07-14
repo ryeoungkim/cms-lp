@@ -4,7 +4,6 @@ import {
   CLIENTS,
   STAGES,
   FORM_URL,
-  SUBSIDY_DOCS_URL,
   type ClientPage,
 } from "@/data/clients";
 
@@ -43,7 +42,7 @@ export default async function ClientGuidePage({
         <Schedule client={client} />
         <CashFlow client={client} />
         <RadioSponsor client={client} />
-        <Documents />
+        <Documents client={client} />
         <Apply />
         <Contact />
       </div>
@@ -290,12 +289,12 @@ function RadioSponsor({ client }: { client: ClientPage }) {
   );
 }
 
-function Documents() {
+function Documents({ client }: { client: ClientPage }) {
   return (
     <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-800/40 p-6 sm:p-8">
       <h2 className="text-lg font-semibold text-slate-100">補助金申請に必要な情報・書類</h2>
       <p className="mt-3 text-sm leading-relaxed text-slate-300">
-        補助金申請には御社の基本情報といくつかの書類のご提出が必要です。以下のフォームからご提出ください。
+        補助金申請にはいくつかの書類のご提出が必要です。まず事前準備ガイドをご覧のうえ、書類は貴社専用のGoogleドライブ共有フォルダへアップロードしてください。
         締切ラウンドに間に合わせるため、お早めのご準備をお願いします。
       </p>
       <div className="mt-5 flex flex-wrap gap-3">
@@ -305,15 +304,22 @@ function Documents() {
         >
           事前準備ガイド（最初にお読みください） →
         </a>
-        <a
-          href={SUBSIDY_DOCS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block rounded-lg border border-blue-500/50 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-300 transition-colors hover:bg-blue-500/20"
-        >
-          必要情報・書類の提出フォーム →
-        </a>
+        {client.docsFolder && (
+          <a
+            href={client.docsFolder}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-lg border border-blue-500/50 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-300 transition-colors hover:bg-blue-500/20"
+          >
+            貴社専用の書類提出フォルダ →
+          </a>
+        )}
       </div>
+      {!client.docsFolder && (
+        <p className="mt-4 text-xs text-slate-500">
+          ※ 書類提出用の専用フォルダは担当よりご案内します。
+        </p>
+      )}
     </section>
   );
 }

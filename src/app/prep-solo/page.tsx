@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SUBSIDY_DOCS_URL } from "@/data/clients";
 import {
   PrepHeader,
   PrepFooter,
@@ -87,7 +86,7 @@ export default function PrepSoloPage() {
           docs={SOLO_DOCS}
         />
 
-        <SubmitSection url={SUBSIDY_DOCS_URL} />
+        <SubmitSection />
 
         <section className="mt-8 text-xs leading-relaxed text-slate-500">
           <p>

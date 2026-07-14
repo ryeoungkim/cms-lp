@@ -42,6 +42,8 @@ export interface ClientPage {
    * 設定した顧客のページにのみ表示される。from/to は「2026年8月」形式。
    */
   radioSponsor?: { from: string; to: string };
+  /** 補助金書類の提出先（クライアント専用のGoogleドライブ共有フォルダURL）。未設定なら「担当よりご案内」表示 */
+  docsFolder?: string;
   updated: string;
 }
 
@@ -75,5 +77,3 @@ export const CLIENTS: ClientPage[] = [
 ];
 
 export const FORM_URL = "https://forms.gle/WxzwHpvWzkyZ4gcV9";
-export const SUBSIDY_DOCS_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSc6P47D1ANZLk-XR4FLJEVS2cI1QmJZm1Zh8a5NjCijow9pqA/viewform";

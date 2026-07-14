@@ -166,21 +166,27 @@ export function DocsSection({
   );
 }
 
-export function SubmitSection({ url }: { url: string }) {
+export function SubmitSection({ folderUrl }: { folderUrl?: string }) {
   return (
     <section className="mt-8 rounded-2xl border border-blue-500/40 bg-gradient-to-br from-blue-600/20 to-emerald-600/10 p-6 sm:p-8">
       <h2 className="text-lg font-semibold text-slate-100">書類のご提出</h2>
       <p className="mt-3 text-sm leading-relaxed text-slate-300">
-        書類がそろいましたら、以下のフォームからご提出ください。締切ラウンドに間に合わせるため、そろった分から順次のご提出でも構いません。
+        書類は、貴社専用のGoogleドライブ共有フォルダへアップロードしてください。締切ラウンドに間に合わせるため、そろった分から順次のご提出でも構いません。
       </p>
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-5 inline-block rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
-      >
-        必要情報・書類の提出フォーム →
-      </a>
+      {folderUrl ? (
+        <a
+          href={folderUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-5 inline-block rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+        >
+          貴社専用の提出フォルダを開く →
+        </a>
+      ) : (
+        <p className="mt-4 rounded-lg border border-slate-700 bg-slate-900/50 p-4 text-sm text-slate-300">
+          専用フォルダのURLは担当（株式会社リエゾン 金）よりご案内します。
+        </p>
+      )}
     </section>
   );
 }
