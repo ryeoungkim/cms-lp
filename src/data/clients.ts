@@ -59,7 +59,7 @@ export const DEFAULT_AMOUNTS: ClientAmounts = {
 export const CLIENTS: ClientPage[] = [
   { slug: "levechy-x7k2", name: "株式会社LEVECHY", stage: 1, round: "7月", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
   { slug: "leriro-q9m4", name: "LERIRO", stage: 1, round: "調整中", amounts: { purchase: 520, barter: 344, subsidy: 315.1, net: 139.1, confirmed: true }, updated: "2026-07-14" },
-  { slug: "metadoctors-t3w8", name: "株式会社medverse", stage: 1, round: "7月", amounts: { purchase: 370, barter: 220, subsidy: 224.2, net: 74.2, confirmed: true }, updated: "2026-07-14" },
+  { slug: "metadoctors-t3w8", name: "株式会社Metadoctors", stage: 1, round: "7月", amounts: { purchase: 370, barter: 220, subsidy: 224.2, net: 74.2, confirmed: true }, updated: "2026-07-14" },
   { slug: "let-p5r7", name: "レット株式会社", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
   { slug: "infront-j2d6", name: "株式会社INFRONT", stage: 1, round: "調整中", amounts: { purchase: 990, barter: 710, subsidy: 450, net: 170, confirmed: true }, updated: "2026-07-14" },
   { slug: "liaisonlink-v8n3", name: "リエゾン・リンク", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
