@@ -58,12 +58,12 @@ export const DEFAULT_AMOUNTS: ClientAmounts = {
 
 export const CLIENTS: ClientPage[] = [
   { slug: "levechy-x7k2", name: "株式会社LEVECHY", stage: 1, round: "7月", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
-  { slug: "leriro-q9m4", name: "LERIRO", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 355, subsidy: 346, net: 130, confirmed: true }, updated: "2026-07-09" },
-  { slug: "metadoctors-t3w8", name: "株式会社medverse", stage: 1, round: "7月", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
+  { slug: "leriro-q9m4", name: "LERIRO", stage: 1, round: "調整中", amounts: { purchase: 520, barter: 344, subsidy: 315.1, net: 139.1, confirmed: true }, updated: "2026-07-14" },
+  { slug: "metadoctors-t3w8", name: "株式会社medverse", stage: 1, round: "7月", amounts: { purchase: 370, barter: 220, subsidy: 224.2, net: 74.2, confirmed: true }, updated: "2026-07-14" },
   { slug: "let-p5r7", name: "レット株式会社", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
-  { slug: "infront-j2d6", name: "株式会社INFRONT", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
+  { slug: "infront-j2d6", name: "株式会社INFRONT", stage: 1, round: "調整中", amounts: { purchase: 990, barter: 710, subsidy: 450, net: 170, confirmed: true }, updated: "2026-07-14" },
   { slug: "liaisonlink-v8n3", name: "リエゾン・リンク", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
-  { slug: "inzaghi-c4b9", name: "インザーギ", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
+  { slug: "inzaghi-c4b9", name: "インザーギ", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 260, subsidy: 346.6, net: 34.6, confirmed: true }, updated: "2026-07-14" },
   { slug: "globalconnection-h6f1", name: "GlobalConnection", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
   { slug: "tireworld-y3g5", name: "タイヤワールド館ベスト", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
   { slug: "blago-w7s2", name: "BLAGO", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-07-09" },
