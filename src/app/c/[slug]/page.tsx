@@ -256,6 +256,9 @@ function CashFlow({ client }: { client: ClientPage }) {
         <p className="mt-1 text-2xl font-bold text-emerald-300">
           +{a.net}万円<span className="ml-1 text-sm font-normal">（税込）</span>
         </p>
+        {client.netNote && (
+          <p className="mt-2 text-sm text-slate-300">※ {client.netNote}</p>
+        )}
       </div>
       <p className="mt-4 text-xs leading-relaxed text-slate-500">
         ※ 8月・9月ラウンドで申請される場合は、上記の各時期が概ね1〜2か月ずつ後ろにずれます。
