@@ -48,7 +48,7 @@ const STEPS: StepSpec[] = [
     time: "STEP1完了後、約15分（ID即時発行）",
     procedure: [
       "SECURITY ACTION管理システムにgBizIDでログイン",
-      "「★一つ星」を宣言",
+      "ログイン後マイページから「★一つ星」を宣言",
       "発行された自己宣言ID（5から始まる11桁）を控えて弊社に共有",
     ],
     pitfalls: [
