@@ -74,7 +74,7 @@ export const CLIENTS: ClientPage[] = [
   { slug: "selpromote-d8q3", name: "セルプロモート", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1xfnmnwR0dzpch0Um98co8Ld0W1PleuV_", updated: "2026-07-14" },
   { slug: "tricepied-f5z7", name: "株式会社トライスパイド", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1OjTqIWL--WVhiX4AVQFd_uk5IUg55KSA", updated: "2026-07-14" },
   { slug: "fiss-n4x8", name: "FISS", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1OeFYchsQkRv4JEjjcD1lPThOvjbxVRXT", updated: "2026-07-14" },
-  { slug: "napoli-b6v2", name: "ナポリ", stage: 1, round: "調整中", amounts: { purchase: 990, barter: 710, subsidy: 450, net: 170, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/10i5LD8J06_CVVLw3QoGlRiD3xfXn_2bc", updated: "2026-07-16" },
+  { slug: "napoli-b6v2", name: "ナポリ", stage: 1, round: "調整中", amounts: { purchase: 990, barter: 695, subsidy: 450, net: 155, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/10i5LD8J06_CVVLw3QoGlRiD3xfXn_2bc", updated: "2026-07-16" },
   { slug: "neolead-g3j9", name: "Neolead", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1n2GHTpnv_2qkxJoVvqFnuap1Yjpr9BG2", updated: "2026-07-14" },
 ];
 
