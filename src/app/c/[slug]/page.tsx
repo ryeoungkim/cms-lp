@@ -260,6 +260,15 @@ function CashFlow({ client }: { client: ClientPage }) {
           <p className="mt-2 text-sm text-slate-300">※ {client.netNote}</p>
         )}
       </div>
+      <div className="mt-6 rounded-xl border border-slate-700 bg-slate-800/60 p-5">
+        <p className="text-sm font-semibold text-slate-200">賃上げ要件について</p>
+        <p className="mt-2 text-sm leading-relaxed text-slate-300">
+          賃上げ要件は申請枠・過去の採択歴により異なります。インボイス枠の初回申請は賃上げ不要です。
+          通常枠150万円以上は年平均+3%（過去採択者は+3.5%）の賃上げ計画が必須で、
+          未達の場合は補助金返還の可能性があります（免除条件あり）。
+          御社がどの枠・条件に該当するかは担当より個別にご案内します。
+        </p>
+      </div>
       <p className="mt-4 text-xs leading-relaxed text-slate-500">
         ※ 8月・9月ラウンドで申請される場合は、上記の各時期が概ね1〜2か月ずつ後ろにずれます。
         ※ 金額・時期は補助金の交付決定内容等により変動する場合があります。
