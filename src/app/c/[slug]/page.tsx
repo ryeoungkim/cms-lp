@@ -137,59 +137,70 @@ function Status({ client }: { client: ClientPage }) {
   );
 }
 
+const ROUNDS = [
+  { key: "1次", deadline: "2026年7月21日", decision: "2026年9月2日", payout: "2026年10月中旬", closed: true },
+  { key: "2次", deadline: "2026年8月25日", decision: "2026年10月7日（予定）", payout: "2026年11月中旬" },
+  { key: "3次", deadline: "2026年9月29日", decision: "2026年11月10日（予定）", payout: "2026年12月下旬" },
+  { key: "4次", deadline: "2026年10月27日", decision: "2026年12月8日（予定）", payout: "2027年1月中旬", target: true },
+  { key: "5次", deadline: "2026年11月24日", decision: "2027年1月12日（予定）", payout: "2027年2月下旬", tentative: true },
+] as const;
+
 function Schedule({ client }: { client: ClientPage }) {
   return (
     <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-800/40 p-6 sm:p-8">
       <h2 className="text-lg font-semibold text-slate-100">申請スケジュール</h2>
       <p className="mt-3 text-sm leading-relaxed text-slate-300">
         補助金（デジタル化・AI導入補助金2026）は申請ラウンド（締切）ごとに受け付けられます。
-        <strong className="text-slate-100">最短は 7月21日 締切のラウンド</strong>
-        で、以降も8月・9月とラウンドが続きます（各回の締切日は確定次第ご案内します）。
+        現在は、書類準備の余裕を見て
+        <strong className="text-slate-100">4次締切（2026年10月27日）での申請</strong>
+        を標準にご案内しています。
       </p>
       <div className="mt-5 overflow-x-auto">
-        <table className="w-full min-w-[480px] text-left text-sm">
+        <table className="w-full min-w-[520px] text-left text-sm">
           <thead>
             <tr className="border-b border-slate-700 text-xs text-slate-400">
               <th className="py-2 pr-4 font-medium">ラウンド</th>
-              <th className="py-2 pr-4 font-medium">申請締切</th>
-              <th className="py-2 pr-4 font-medium">交付決定（目安）</th>
+              <th className="py-2 pr-4 font-medium">申請締切（17:00）</th>
+              <th className="py-2 pr-4 font-medium">交付決定</th>
               <th className="py-2 font-medium">補助金入金（目安）</th>
             </tr>
           </thead>
           <tbody className="text-slate-200">
-            <tr className={"border-b border-slate-800 " + (client.round === "7月" ? "bg-blue-500/10" : "")}>
-              <td className="py-3 pr-4">
-                7月ラウンド{client.round === "7月" && (
-                  <span className="ml-2 rounded bg-blue-600 px-2 py-0.5 text-xs text-white">御社対象</span>
-                )}
-              </td>
-              <td className="py-3 pr-4 font-semibold">2026年7月21日</td>
-              <td className="py-3 pr-4">2026年9月2日</td>
-              <td className="py-3">2026年10月中旬</td>
-            </tr>
-            <tr className={"border-b border-slate-800 " + (client.round === "8月" ? "bg-blue-500/10" : "")}>
-              <td className="py-3 pr-4">
-                8月ラウンド{client.round === "8月" && (
-                  <span className="ml-2 rounded bg-blue-600 px-2 py-0.5 text-xs text-white">御社対象</span>
-                )}
-              </td>
-              <td className="py-3 pr-4">確定次第ご案内</td>
-              <td className="py-3 pr-4">約1.5か月後</td>
-              <td className="py-3">交付決定の約1〜1.5か月後</td>
-            </tr>
-            <tr className={client.round === "9月" ? "bg-blue-500/10" : ""}>
-              <td className="py-3 pr-4">
-                9月ラウンド{client.round === "9月" && (
-                  <span className="ml-2 rounded bg-blue-600 px-2 py-0.5 text-xs text-white">御社対象</span>
-                )}
-              </td>
-              <td className="py-3 pr-4">確定次第ご案内</td>
-              <td className="py-3 pr-4">約1.5か月後</td>
-              <td className="py-3">交付決定の約1〜1.5か月後</td>
-            </tr>
+            {ROUNDS.map((r, i) => {
+              const mine = client.round === r.key;
+              return (
+                <tr
+                  key={r.key}
+                  className={
+                    (i < ROUNDS.length - 1 ? "border-b border-slate-800 " : "") +
+                    (mine ? "bg-blue-500/10" : "closed" in r && r.closed ? "text-slate-500" : "")
+                  }
+                >
+                  <td className="py-3 pr-4 whitespace-nowrap">
+                    {r.key}締切
+                    {mine && (
+                      <span className="ml-2 rounded bg-blue-600 px-2 py-0.5 text-xs text-white">御社対象</span>
+                    )}
+                    {"closed" in r && r.closed && (
+                      <span className="ml-2 rounded bg-slate-700 px-2 py-0.5 text-xs text-slate-400">受付終了</span>
+                    )}
+                    {"target" in r && r.target && !mine && (
+                      <span className="ml-2 rounded bg-emerald-600/80 px-2 py-0.5 text-xs text-white">ご案内中</span>
+                    )}
+                  </td>
+                  <td className={"py-3 pr-4 " + ("target" in r && r.target ? "font-semibold" : "")}>{r.deadline}</td>
+                  <td className="py-3 pr-4">{r.decision}</td>
+                  <td className="py-3">{r.payout}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
+      <p className="mt-4 text-xs leading-relaxed text-slate-500">
+        ※ 3次以降の日程は事務局の公表により変更される場合があります。5次締切は予算の消化状況により実施されない可能性があります。
+        ※ 補助金入金は交付決定から約6週間後が目安です。
+      </p>
     </section>
   );
 }
@@ -197,18 +208,18 @@ function Schedule({ client }: { client: ClientPage }) {
 function CashFlow({ client }: { client: ClientPage }) {
   const a = client.amounts;
   const steps = [
-    { when: "7月初旬", what: "双方でバーター発注（前提）", amount: null as string | null, dir: null as string | null },
-    { when: "7月21日", what: "補助金申請 締切", amount: null, dir: null },
-    { when: "9月2日", what: "交付決定", amount: null, dir: null },
-    { when: "9月2日", what: "御社 → システムクラウド（パートナー）へのお支払い", amount: `${a.purchase}万円（税込）`, dir: "out" },
-    { when: "9月2日", what: "リエゾン → 御社へのお支払い", amount: `${a.barter}万円`, dir: "in" },
-    { when: "10月中旬", what: "補助金の入金", amount: `${a.subsidy}万円`, dir: "in" },
+    { when: "10月中旬", what: "双方でバーター発注（前提）", amount: null as string | null, dir: null as string | null },
+    { when: "10月27日", what: "補助金申請 締切（4次）", amount: null, dir: null },
+    { when: "12月8日", what: "交付決定（予定）", amount: null, dir: null },
+    { when: "12月8日", what: "御社 → システムクラウド（パートナー）へのお支払い", amount: `${a.purchase}万円（税込）`, dir: "out" },
+    { when: "12月8日", what: "リエゾン → 御社へのお支払い", amount: `${a.barter}万円`, dir: "in" },
+    { when: "2027年1月中旬", what: "補助金の入金", amount: `${a.subsidy}万円`, dir: "in" },
   ];
   return (
     <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-800/40 p-6 sm:p-8">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="text-lg font-semibold text-slate-100">
-          お金の流れ（7月ラウンド申請の場合）
+          お金の流れ（4次締切〔10月27日〕で申請の場合）
         </h2>
         {!a.confirmed && (
           <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs text-amber-300">
@@ -270,7 +281,7 @@ function CashFlow({ client }: { client: ClientPage }) {
         </p>
       </div>
       <p className="mt-4 text-xs leading-relaxed text-slate-500">
-        ※ 8月・9月ラウンドで申請される場合は、上記の各時期が概ね1〜2か月ずつ後ろにずれます。
+        ※ 他のラウンドで申請される場合は、上記の各時期がラウンドに応じて前後します。
         ※ 金額・時期は補助金の交付決定内容等により変動する場合があります。
       </p>
     </section>
