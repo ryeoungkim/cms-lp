@@ -138,10 +138,33 @@ function Status({ client }: { client: ClientPage }) {
 }
 
 const ROUNDS = [
-  { key: "4次", deadline: "2026年8月25日（火）17:00", decision: "2026年10月7日（水）（予定）", payout: "2026年11月中旬", target: true },
+  {
+    key: "3次",
+    deadline: "2026年7月21日（火）17:00",
+    decision: "2026年9月2日（水）（予定）",
+    payout: "2026年10月中旬",
+    closed: true,
+    cash: { barter: "7月中旬", deadline: "7月21日", decision: "9月2日", payout: "10月中旬" },
+  },
+  {
+    key: "4次",
+    deadline: "2026年8月25日（火）17:00",
+    decision: "2026年10月7日（水）（予定）",
+    payout: "2026年11月中旬",
+    target: true,
+    cash: { barter: "8月中旬", deadline: "8月25日", decision: "10月7日", payout: "11月中旬" },
+  },
   { key: "5次", deadline: "公表待ち", decision: "—", payout: "—" },
   { key: "6次", deadline: "公表待ち", decision: "—", payout: "—" },
 ] as const;
+
+/** クライアントの対象ラウンド（日程確定分）。未設定・公表待ちなら受付中ラウンドにフォールバック */
+function clientRound(client: ClientPage) {
+  return (
+    ROUNDS.find((r) => r.key === client.round && "cash" in r) ??
+    ROUNDS.find((r) => "target" in r && r.target)!
+  );
+}
 
 function Schedule({ client }: { client: ClientPage }) {
   return (
@@ -167,6 +190,7 @@ function Schedule({ client }: { client: ClientPage }) {
             {ROUNDS.map((r, i) => {
               const mine = client.round === r.key;
               const target = "target" in r && r.target;
+              const closed = "closed" in r && r.closed;
               return (
                 <tr
                   key={r.key}
@@ -178,15 +202,20 @@ function Schedule({ client }: { client: ClientPage }) {
                   <td className="py-3 pr-4 whitespace-nowrap">
                     {r.key}締切
                     {mine && (
-                      <span className="ml-2 rounded bg-blue-600 px-2 py-0.5 text-xs text-white">御社対象</span>
+                      <span className="ml-2 rounded bg-blue-600 px-2 py-0.5 text-xs text-white">
+                        御社対象{closed && "・申請済み"}
+                      </span>
+                    )}
+                    {closed && !mine && (
+                      <span className="ml-2 rounded bg-slate-700 px-2 py-0.5 text-xs text-slate-400">受付終了</span>
                     )}
                     {target && !mine && (
                       <span className="ml-2 rounded bg-emerald-600/80 px-2 py-0.5 text-xs text-white">受付中</span>
                     )}
                   </td>
-                  <td className={"py-3 pr-4 " + (target ? "font-semibold" : "text-slate-400")}>{r.deadline}</td>
-                  <td className={"py-3 pr-4 " + (target ? "" : "text-slate-400")}>{r.decision}</td>
-                  <td className={"py-3 " + (target ? "" : "text-slate-400")}>{r.payout}</td>
+                  <td className={"py-3 pr-4 " + (target || mine ? "font-semibold" : "text-slate-400")}>{r.deadline}</td>
+                  <td className={"py-3 pr-4 " + (target || mine ? "" : "text-slate-400")}>{r.decision}</td>
+                  <td className={"py-3 " + (target || mine ? "" : "text-slate-400")}>{r.payout}</td>
                 </tr>
               );
             })}
@@ -203,19 +232,21 @@ function Schedule({ client }: { client: ClientPage }) {
 
 function CashFlow({ client }: { client: ClientPage }) {
   const a = client.amounts;
+  const r = clientRound(client);
+  const c = r.cash;
   const steps = [
-    { when: "8月中旬", what: "双方でバーター発注（前提）", amount: null as string | null, dir: null as string | null },
-    { when: "8月25日", what: "補助金申請 締切（4次）", amount: null, dir: null },
-    { when: "10月7日", what: "交付決定（予定）", amount: null, dir: null },
-    { when: "10月7日", what: "御社 → システムクラウド（パートナー）へのお支払い", amount: `${a.purchase}万円（税込）`, dir: "out" },
-    { when: "10月7日", what: "リエゾン → 御社へのお支払い", amount: `${a.barter}万円`, dir: "in" },
-    { when: "11月中旬", what: "補助金の入金", amount: `${a.subsidy}万円`, dir: "in" },
+    { when: `${c.barter}`, what: "双方でバーター発注（前提）", amount: null as string | null, dir: null as string | null },
+    { when: `${c.deadline}`, what: `補助金申請 締切（${r.key}）`, amount: null, dir: null },
+    { when: `${c.decision}`, what: "交付決定（予定）", amount: null, dir: null },
+    { when: `${c.decision}`, what: "御社 → システムクラウド（パートナー）へのお支払い", amount: `${a.purchase}万円（税込）`, dir: "out" },
+    { when: `${c.decision}`, what: "リエゾン → 御社へのお支払い", amount: `${a.barter}万円`, dir: "in" },
+    { when: `${c.payout}`, what: "補助金の入金", amount: `${a.subsidy}万円`, dir: "in" },
   ];
   return (
     <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-800/40 p-6 sm:p-8">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="text-lg font-semibold text-slate-100">
-          お金の流れ（4次締切〔8月25日〕で申請の場合）
+          お金の流れ（{r.key}締切〔{c.deadline}〕で申請の場合）
         </h2>
         {!a.confirmed && (
           <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs text-amber-300">
