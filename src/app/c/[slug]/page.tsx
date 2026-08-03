@@ -137,7 +137,18 @@ function Status({ client }: { client: ClientPage }) {
   );
 }
 
-const ROUNDS = [
+interface Round {
+  key: string;
+  deadline: string;
+  decision: string;
+  payout: string;
+  closed?: boolean;
+  target?: boolean;
+  /** お金の流れセクション用の短縮日付（未確定ラウンドは持たない） */
+  cash?: { barter: string; deadline: string; decision: string; payout: string };
+}
+
+const ROUNDS: Round[] = [
   {
     key: "3次",
     deadline: "2026年7月21日（火）17:00",
@@ -156,13 +167,13 @@ const ROUNDS = [
   },
   { key: "5次", deadline: "公表待ち", decision: "—", payout: "—" },
   { key: "6次", deadline: "公表待ち", decision: "—", payout: "—" },
-] as const;
+];
 
 /** クライアントの対象ラウンド（日程確定分）。未設定・公表待ちなら受付中ラウンドにフォールバック */
 function clientRound(client: ClientPage) {
   return (
-    ROUNDS.find((r) => r.key === client.round && "cash" in r) ??
-    ROUNDS.find((r) => "target" in r && r.target)!
+    ROUNDS.find((r) => r.key === client.round && r.cash) ??
+    ROUNDS.find((r) => r.target)!
   );
 }
 
@@ -189,8 +200,8 @@ function Schedule({ client }: { client: ClientPage }) {
           <tbody className="text-slate-200">
             {ROUNDS.map((r, i) => {
               const mine = client.round === r.key;
-              const target = "target" in r && r.target;
-              const closed = "closed" in r && r.closed;
+              const target = r.target;
+              const closed = r.closed;
               return (
                 <tr
                   key={r.key}
@@ -233,7 +244,7 @@ function Schedule({ client }: { client: ClientPage }) {
 function CashFlow({ client }: { client: ClientPage }) {
   const a = client.amounts;
   const r = clientRound(client);
-  const c = r.cash;
+  const c = r.cash!;
   const steps = [
     { when: `${c.barter}`, what: "双方でバーター発注（前提）", amount: null as string | null, dir: null as string | null },
     { when: `${c.deadline}`, what: `補助金申請 締切（${r.key}）`, amount: null, dir: null },
