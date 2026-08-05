@@ -34,7 +34,7 @@ export interface ClientPage {
   stage: number;
   /** 個社向けの補足メッセージ（ユーザーが順次記入） */
   statusNote?: string;
-  /** 対象申請ラウンド: 公式の締切次数（3次=7/21申請済み組、2026-08-03時点の受付中=4次〔8/25〕。5次以降は公表待ち） */
+  /** 対象申請ラウンド: 公式の締切次数（3次=7/21申請済み組、2026-08-05時点の受付中=4次〔8/25〕。5次以降は公表待ち） */
   round: "3次" | "4次" | "5次" | "6次" | "調整中";
   amounts: ClientAmounts;
   /**
@@ -60,10 +60,10 @@ export const DEFAULT_AMOUNTS: ClientAmounts = {
 
 export const CLIENTS: ClientPage[] = [
   { slug: "levechy-x7k2", name: "株式会社LEVECHY", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1kDCH0VilsQ2ou52VNKnVoWJzUS-p4wHM", updated: "2026-07-16" },
-  { slug: "leriro-q9m4", name: "LERIRO", stage: 4, round: "3次", amounts: { purchase: 572, barter: 356, subsidy: 346.6, net: 130.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1pigQTG_asylMupXPED47AOLbv_Em_sd4", updated: "2026-08-03" },
+  { slug: "leriro-q9m4", name: "LERIRO", stage: 4, round: "3次", amounts: { purchase: 572, barter: 356, subsidy: 346.6, net: 130.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1pigQTG_asylMupXPED47AOLbv_Em_sd4", updated: "2026-08-05" },
   { slug: "metadoctors-t3w8", name: "株式会社Metadoctors", stage: 1, round: "調整中", amounts: { purchase: 370, barter: 154, subsidy: 224.2, net: 8.2, confirmed: true }, netNote: "ポッドキャスト音声制作費6ヶ月分込（66万円分 ※税込）", docsFolder: "https://drive.google.com/drive/folders/1H_YJMLTVbWCGhL9CECny_SxPeyFQWac3", updated: "2026-07-16" },
   { slug: "let-p5r7", name: "レット株式会社", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 230, subsidy: 346.6, net: 4.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1qesMV_IUitSl-SjaAzhL1Y55Gso8rE3h", updated: "2026-07-15" },
-  { slug: "infront-j2d6", name: "株式会社INFRONT", stage: 4, round: "3次", amounts: { purchase: 990, barter: 710, subsidy: 450, net: 170, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1F0xEz7xp_4mJkluBICwgF_2VvLeyIhAh", updated: "2026-08-03" },
+  { slug: "infront-j2d6", name: "株式会社INFRONT", stage: 4, round: "3次", amounts: { purchase: 990, barter: 710, subsidy: 450, net: 170, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1F0xEz7xp_4mJkluBICwgF_2VvLeyIhAh", updated: "2026-08-05" },
   { slug: "liaisonlink-v8n3", name: "リエゾン・リンク", stage: 1, round: "調整中", amounts: { purchase: 550, barter: 300, subsidy: 250, net: 0, confirmed: true }, netNote: "コンサルティング費用2026年6月〜2027年11月分込", docsFolder: "https://drive.google.com/drive/folders/1BFbMXUCHdUfUyYLnYyIuoeaNEjjKu8B-", updated: "2026-07-16" },
   { slug: "inzaghi-c4b9", name: "インザーギ", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 256, subsidy: 346.6, net: 30.6, confirmed: true }, netNote: "クワダテ広告費2026年4月〜2027年3月分込", docsFolder: "https://drive.google.com/drive/folders/1zAvYKVWJGbhQaLvcREVcA1w7Dzp0Oelf", updated: "2026-07-15" },
   { slug: "globalconnection-h6f1", name: "GlobalConnection", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1NFEJ4cHvyLXkegPX2GyfepAaesmgP_s6", updated: "2026-07-14" },
@@ -71,12 +71,12 @@ export const CLIENTS: ClientPage[] = [
   { slug: "blago-w7s2", name: "BLAGO", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/19S1GAdt0jD0dHRLfsRK3PMV3qLw4dhX4", updated: "2026-07-14" },
   { slug: "wanget-m9k6", name: "Wanget", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1iZ6MD7KlQybjjZAfbEGeOd-dcfQU7p5V", updated: "2026-07-14" },
   { slug: "hackshub-r2t4", name: "ハックスハブ", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1svPVQOhZUMUkFcu9892sRdPqRnr_S_kL", updated: "2026-07-14" },
-  { slug: "selpromote-d8q3", name: "セルプロモート", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 230, subsidy: 346.6, net: 4.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1xfnmnwR0dzpch0Um98co8Ld0W1PleuV_", updated: "2026-08-03" },
+  { slug: "selpromote-d8q3", name: "セルプロモート", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 230, subsidy: 346.6, net: 4.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1xfnmnwR0dzpch0Um98co8Ld0W1PleuV_", updated: "2026-08-05" },
   { slug: "tricepied-f5z7", name: "株式会社トライスパイド", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1OjTqIWL--WVhiX4AVQFd_uk5IUg55KSA", updated: "2026-07-14" },
   { slug: "fiss-n4x8", name: "FISS", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1OeFYchsQkRv4JEjjcD1lPThOvjbxVRXT", updated: "2026-07-14" },
-  { slug: "napoli-b6v2", name: "ナポリ", stage: 4, round: "3次", amounts: { purchase: 990, barter: 695, subsidy: 450, net: 155, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/10i5LD8J06_CVVLw3QoGlRiD3xfXn_2bc", updated: "2026-08-03" },
+  { slug: "napoli-b6v2", name: "ナポリ", stage: 4, round: "3次", amounts: { purchase: 990, barter: 695, subsidy: 450, net: 155, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/10i5LD8J06_CVVLw3QoGlRiD3xfXn_2bc", updated: "2026-08-05" },
   { slug: "neolead-g3j9", name: "Neolead", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1n2GHTpnv_2qkxJoVvqFnuap1Yjpr9BG2", updated: "2026-07-14" },
-  { slug: "marriott-tqd4", name: "株式会社mariott", stage: 1, round: "4次", amounts: { purchase: 198, barter: 121, subsidy: 120, net: 43, confirmed: true }, updated: "2026-08-03" },
+  { slug: "marriott-tqd4", name: "株式会社mariott", stage: 1, round: "4次", amounts: { purchase: 198, barter: 121, subsidy: 120, net: 43, confirmed: true }, updated: "2026-08-05" },
 ];
 
 export const FORM_URL = "https://forms.gle/WxzwHpvWzkyZ4gcV9";
