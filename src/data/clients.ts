@@ -59,7 +59,7 @@ export const DEFAULT_AMOUNTS: ClientAmounts = {
 };
 
 export const CLIENTS: ClientPage[] = [
-  { slug: "levechy-x7k2", name: "株式会社LEVECHY", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1kDCH0VilsQ2ou52VNKnVoWJzUS-p4wHM", updated: "2026-07-16" },
+  { slug: "levechy-x7k2", name: "株式会社LEVECHY", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 230, subsidy: 346.6, net: 4.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1kDCH0VilsQ2ou52VNKnVoWJzUS-p4wHM", updated: "2026-08-05" },
   { slug: "leriro-q9m4", name: "LERIRO", stage: 4, round: "3次", amounts: { purchase: 572, barter: 356, subsidy: 346.6, net: 130.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1pigQTG_asylMupXPED47AOLbv_Em_sd4", updated: "2026-08-05" },
   { slug: "metadoctors-t3w8", name: "株式会社Metadoctors", stage: 1, round: "調整中", amounts: { purchase: 370, barter: 154, subsidy: 224.2, net: 8.2, confirmed: true }, netNote: "ポッドキャスト音声制作費6ヶ月分込（66万円分 ※税込）", docsFolder: "https://drive.google.com/drive/folders/1H_YJMLTVbWCGhL9CECny_SxPeyFQWac3", updated: "2026-07-16" },
   { slug: "let-p5r7", name: "レット株式会社", stage: 1, round: "調整中", amounts: { purchase: 572, barter: 230, subsidy: 346.6, net: 4.6, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/1qesMV_IUitSl-SjaAzhL1Y55Gso8rE3h", updated: "2026-07-15" },
