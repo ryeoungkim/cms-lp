@@ -77,6 +77,7 @@ export const CLIENTS: ClientPage[] = [
   { slug: "napoli-b6v2", name: "ナポリ", stage: 4, round: "3次", amounts: { purchase: 990, barter: 695, subsidy: 450, net: 155, confirmed: true }, docsFolder: "https://drive.google.com/drive/folders/10i5LD8J06_CVVLw3QoGlRiD3xfXn_2bc", updated: "2026-08-05" },
   { slug: "neolead-g3j9", name: "Neolead", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, docsFolder: "https://drive.google.com/drive/folders/1n2GHTpnv_2qkxJoVvqFnuap1Yjpr9BG2", updated: "2026-07-14" },
   { slug: "marriott-tqd4", name: "株式会社mariott", stage: 1, round: "4次", amounts: { purchase: 198, barter: 121, subsidy: 120, net: 43, confirmed: true }, updated: "2026-08-05" },
+  { slug: "garabato-onjg", name: "株式会社Garabato Group", stage: 1, round: "調整中", amounts: { ...DEFAULT_AMOUNTS }, updated: "2026-08-05" },
 ];
 
 export const FORM_URL = "https://forms.gle/WxzwHpvWzkyZ4gcV9";
